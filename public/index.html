@@ -3,14 +3,17 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>FLO Tiny Desk Fan Shrine — Chrome Void</title>
-  <meta name="description" content="A Y2K chrome-and-stars fan shrine for FLO's February 20, 2026 NPR Tiny Desk Concert. Not affiliated with NPR or FLO — fan tribute only." />
-  <meta property="og:title" content="FLO Tiny Desk Fan Shrine — Chrome Void" />
-  <meta property="og:description" content="The #1 unofficial FLO Tiny Desk fan page — chrome type, starfield void, setlist, Vevo, and Tiny Desk energy." />
+  <title>Flo Tiny Desk Tribute</title>
+  <meta name="description" content="Made by @tisebuilds" />
+  <meta property="og:title" content="Flo Tiny Desk Tribute" />
+  <meta property="og:description" content="Made by @tisebuilds" />
   <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://flo-tinydesk-fan-tribute.vercel.app/Favicon.png" />
   <meta name="twitter:card" content="summary_large_image" />
-  <meta name="twitter:title" content="FLO Tiny Desk Fan Shrine" />
-  <meta name="twitter:description" content="Y2K chrome void fan shrine for FLO's 2026 Tiny Desk. Best viewed in 800×600 (lol)." />
+  <meta name="twitter:title" content="Flo Tiny Desk Tribute" />
+  <meta name="twitter:description" content="Made by @tisebuilds" />
+  <meta name="twitter:image" content="https://flo-tinydesk-fan-tribute.vercel.app/Favicon.png" />
+  <link rel="icon" href="/Favicon.png" type="image/png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Orbitron:wght@500;600;700;800&family=VT323&display=swap" rel="stylesheet" />
@@ -1239,12 +1242,12 @@
       color: var(--chrome-hi);
     }
 
-    /* —— Watch bleed: edge-to-edge rails, marquees flush with player —— */
+    /* —— Watch rail: max 920px, centered; marquees flush with player —— */
     .watch-bleed {
-      width: 100vw;
+      width: min(100vw, 920px);
       max-width: 100vw;
-      margin-left: calc(50% - 50vw);
-      margin-right: calc(50% - 50vw);
+      margin-left: calc(50% - min(50vw, 460px));
+      margin-right: calc(50% - min(50vw, 460px));
       position: relative;
     }
 
@@ -2710,7 +2713,7 @@
                 <tr>
                   <th scope="col">#</th>
                   <th scope="col">Track</th>
-                  <th scope="col">Type</th>
+                  <th scope="col"><span class="sr-only">Release type</span></th>
                 </tr>
               </thead>
               <tbody id="setlist-body">
