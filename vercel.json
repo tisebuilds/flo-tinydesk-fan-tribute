@@ -1,6 +1,7 @@
 {
   "rewrites": [
-    { "source": "/", "destination": "/flo-y2k.html" },
-    { "source": "/flo-y2k", "destination": "/flo-y2k.html" }
+    { "source": "/", "destination": "/public/index.html" },
+    { "source": "/flo-y2k", "destination": "/public/index.html" },
+    { "source": "/flo-y2k.html", "destination": "/public/index.html" }
   ]
 }

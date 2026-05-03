@@ -40,7 +40,7 @@ This is the **fan-expression** companion to the editorial micro-site (`flo-tiny-
 
 ## Tech Stack
 
-- Single static HTML file (`flo-y2k.html`) — inline `<style>` + inline `<script>`
+- Single static HTML file (`public/index.html`) — inline `<style>` + inline `<script>`
 - Google Fonts: **VT323** (terminal), **Permanent Marker** (handwritten), **Press Start 2P** (8-bit)
 - System `Comic Sans MS` as body fallback (mandatory for the genre)
 - Vanilla JS — Web Audio API (square + sawtooth oscillators), Clipboard API, fake hit counter
@@ -53,7 +53,7 @@ This is the **fan-expression** companion to the editorial micro-site (`flo-tiny-
 ## Site Map
 
 ```
-flo-y2k.html    ← single-page fan shrine
+public/index.html    ← single-page fan shrine
 ```
 
 One scrolling page. No nav. No routing. Scroll is the only navigation.
@@ -440,7 +440,7 @@ Below 600px, the page still proudly reads "best viewed in 800×600". This is a f
 
 | File | Description |
 |---|---|
-| `flo-y2k.html` | The fan shrine — single-page, inline CSS + JS, zero dependencies |
+| `public/index.html` | The fan shrine — single-page, inline CSS + JS, zero dependencies |
 | `flo-tiny-desk.html` | *(sibling — editorial companion micro-site, see `flo-tiny-desk-PRD.md`)* |
 
 ---
