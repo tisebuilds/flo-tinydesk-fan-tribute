@@ -1008,8 +1008,7 @@
       border-bottom: 1px solid var(--editorial-line);
     }
 
-    .setlist--ipod thead th:nth-child(3),
-    .setlist--ipod thead th:nth-child(4) {
+    .setlist--ipod thead th:nth-child(3) {
       text-align: right;
     }
 
@@ -1116,21 +1115,6 @@
       text-align: right;
       width: 1%;
       white-space: nowrap;
-    }
-
-    .setlist--ipod .setlist__time-cell {
-      vertical-align: middle;
-      text-align: right;
-      width: 1%;
-      white-space: nowrap;
-      font-family: var(--font-mono);
-      font-size: 0.78rem;
-      font-variant-numeric: tabular-nums;
-      color: var(--editorial-muted);
-    }
-
-    .setlist--ipod tbody tr.is-playing .setlist__time-cell {
-      color: var(--chrome-shine);
     }
 
     .badge {
@@ -2640,7 +2624,6 @@
                   <th scope="col">#</th>
                   <th scope="col">Track</th>
                   <th scope="col">Type</th>
-                  <th scope="col">Time</th>
                 </tr>
               </thead>
               <tbody id="setlist-body">
@@ -2653,7 +2636,6 @@
                     <span class="setlist-track__name">Cardboard Box</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--single">EP</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="AAA" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/02 AAA (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2664,7 +2646,6 @@
                     <span class="setlist-track__name">AAA</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="FLO's Interlude" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/03 FLO_s Interlude (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2675,7 +2656,6 @@
                     <span class="setlist-track__name">FLO’s Interlude</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Set</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="On &amp; On" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/04 On &amp; On (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2686,7 +2666,6 @@
                     <span class="setlist-track__name">On &amp; On</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="Get It Till I'm Gone" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/05 Get It Till I_m Gone (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2697,7 +2676,6 @@
                     <span class="setlist-track__name">Get It Till I'm Gone</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="Shoulda Woulda Coulda" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/06 Shoulda Woulda Coulda (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2708,7 +2686,6 @@
                     <span class="setlist-track__name">Shoulda Woulda Coulda</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="Therapy at the Club" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/07 Therapy at the Club (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2719,7 +2696,6 @@
                     <span class="setlist-track__name">Therapy at the Club</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--new">NEW!!!</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
                 <tr data-title="HaterBooth" data-audio="FLO Assets/FLO - Live at NPR_s Tiny Desk/08 HaterBooth (Live at NPR_s Tiny Desk).m4a">
                   <td class="setlist__num">
@@ -2730,7 +2706,6 @@
                     <span class="setlist-track__name">HaterBooth</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--new">NEW!!!</span></td>
-                  <td class="setlist__time-cell">—</td>
                 </tr>
               </tbody>
             </table>
@@ -2808,11 +2783,12 @@
             aria-haspopup="dialog"
             aria-label="Pick up Stella’s virtual photocard"
             data-member="0"
+            data-photocard-download="Photocards/Stella/Download.jpeg"
           >
             <div class="member-card__photo-frame">
               <img
                 class="member-card__photo"
-                src="Flo%20photoshoots/flo-album-review.webp"
+                src="Photocards/Stella/Cover.jpeg"
                 width="520"
                 height="832"
                 alt="Stella Quaresma — FLO"
@@ -2833,11 +2809,12 @@
             aria-haspopup="dialog"
             aria-label="Pick up Renée’s virtual photocard"
             data-member="1"
+            data-photocard-download="Photocards/Renee/Download.jpeg"
           >
             <div class="member-card__photo-frame">
               <img
                 class="member-card__photo"
-                src="Flo%20photoshoots/2520.webp"
+                src="Photocards/Renee/Cover.jpeg"
                 width="520"
                 height="832"
                 alt="Renée Downer — FLO"
@@ -2858,11 +2835,12 @@
             aria-haspopup="dialog"
             aria-label="Pick up Jorja’s virtual photocard"
             data-member="2"
+            data-photocard-download="Photocards/Jorja/Download.jpeg"
           >
             <div class="member-card__photo-frame">
               <img
                 class="member-card__photo"
-                src="Tiny%20Desk/maxresdefault.jpg"
+                src="Photocards/Jorja/Cover.jpeg"
                 width="520"
                 height="832"
                 alt="Jorja Douglas — FLO"
@@ -3344,12 +3322,15 @@
       function downloadVirtualPhotocard(card) {
         var img = card.querySelector(".member-card__photo");
         var nameEl = card.querySelector(".member-name");
-        if (!img) return;
+        var downloadAttr = card.getAttribute("data-photocard-download");
+        var src =
+          downloadAttr && downloadAttr.trim()
+            ? downloadAttr.trim()
+            : img && img.getAttribute("src");
+        if (!src) return;
         var base = nameEl
           ? nameEl.textContent.trim().replace(/\s+/g, "-").toLowerCase()
           : "member";
-        var src = img.getAttribute("src");
-        if (!src) return;
         var url = new URL(src, window.location.href).href;
         var ext = "jpg";
         if (/\.webp(\?|$)/i.test(src)) ext = "webp";
@@ -3388,6 +3369,12 @@
         clone.removeAttribute("role");
         clone.removeAttribute("aria-haspopup");
         clone.removeAttribute("aria-label");
+        var downloadSrc = card.getAttribute("data-photocard-download");
+        if (downloadSrc && downloadSrc.trim()) {
+          var cloneImg = clone.querySelector(".member-card__photo");
+          if (cloneImg) cloneImg.setAttribute("src", downloadSrc.trim());
+          clone.removeAttribute("data-photocard-download");
+        }
         stage.appendChild(clone);
         stage.classList.add("is-animating");
         setTimeout(function () {
@@ -3698,6 +3685,13 @@
         if (pcm && !pcm.hidden && e.key === "Escape") {
           e.preventDefault();
           closePhotocardModal();
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
+;
         }
       });
     })();
