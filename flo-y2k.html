@@ -13,13 +13,19 @@
   <meta name="twitter:description" content="Y2K chrome void fan shrine for FLO's 2026 Tiny Desk. Best viewed in 800×600 (lol)." />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Orbitron:wght@500;600;700;800&family=VT323&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@400;500;600;700&family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,500;0,9..40,600;1,9..40,400&family=Orbitron:wght@500;600;700;800&family=VT323&display=swap" rel="stylesheet" />
   <style>
     :root {
       --font-body: -apple-system, BlinkMacSystemFont, "SF Pro Text", "SF Pro Display", system-ui, "Segoe UI", Roboto, "Helvetica Neue", Helvetica, Arial, sans-serif;
       --font-ui: "DM Sans", var(--font-body);
       --font-display: "Orbitron", var(--font-body);
       --font-mono: "VT323", ui-monospace, monospace;
+      --font-signature: "Caveat", cursive;
+      --gb-parchment: #f2ead4;
+      --gb-parchment-deep: #e8dfca;
+      --gb-parchment-ink: #1a1714;
+      --gb-parchment-muted: rgba(26, 23, 20, 0.62);
+      --gb-margin-line: #c23b3e;
       /* Y2K chrome / void (ref: single-art void + liquid metal) */
       --void: #000000;
       --void-soft: #050508;
@@ -50,18 +56,24 @@
       --orange: var(--chrome-mid);
       --red: var(--flo-red-bright);
       --dark: var(--void);
-      /* Silver metallic chrome cursors — data URI loads reliably; SVGs in /public stay the editable source */
-      --cursor-default: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22m%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ffffff%22%2F%3E%3Cstop%20offset%3D%2220%25%22%20stop-color%3D%22%23c5ccdc%22%2F%3E%3Cstop%20offset%3D%2242%25%22%20stop-color%3D%22%236b7388%22%2F%3E%3Cstop%20offset%3D%2255%25%22%20stop-color%3D%22%23a8b0c4%22%2F%3E%3Cstop%20offset%3D%2278%25%22%20stop-color%3D%22%23e8ecf4%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%235c6378%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22r%22%20x1%3D%2230%25%22%20y1%3D%220%25%22%20x2%3D%2270%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f8fafc%22%20stop-opacity%3D%220.95%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%2364748b%22%20stop-opacity%3D%220.35%22%2F%3E%3C%2FlinearGradient%3E%3CradialGradient%20id%3D%22c%22%20cx%3D%2232%25%22%20cy%3D%2228%25%22%20r%3D%2262%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ffffff%22%2F%3E%3Cstop%20offset%3D%2245%25%22%20stop-color%3D%22%23cbd5e1%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23475569%22%2F%3E%3C%2FradialGradient%3E%3C%2Fdefs%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2212.75%22%20fill%3D%22none%22%20stroke%3D%22%231e293b%22%20stroke-width%3D%220.75%22%20opacity%3D%220.55%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%2211.25%22%20fill%3D%22none%22%20stroke%3D%22url(%23m)%22%20stroke-width%3D%222.05%22%20opacity%3D%220.98%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%228.35%22%20fill%3D%22none%22%20stroke%3D%22url(%23r)%22%20stroke-width%3D%221.1%22%20opacity%3D%220.8%22%2F%3E%3Ccircle%20cx%3D%2216%22%20cy%3D%2216%22%20r%3D%224.6%22%20fill%3D%22url(%23c)%22%20stroke%3D%22%230f172a%22%20stroke-width%3D%220.55%22%2F%3E%3Cellipse%20cx%3D%2214.1%22%20cy%3D%2213.6%22%20rx%3D%221.35%22%20ry%3D%221.05%22%20fill%3D%22%23ffffff%22%20opacity%3D%220.62%22%20transform%3D%22rotate(-28%2014.1%2013.6)%22%2F%3E%3Cpath%20d%3D%22M26%205.2%20L27.75%208.4%20L30.85%209.25%20L27.75%2010.1%20L26%2013.3%20L24.25%2010.1%20L21.15%209.25%20L24.25%208.4%20Z%22%20fill%3D%22%23e2e8f0%22%20stroke%3D%22%2394a3b8%22%20stroke-width%3D%220.35%22%20opacity%3D%220.92%22%2F%3E%3C%2Fsvg%3E") 16 16, url("public/chrome-cursor-default.svg") 16 16, crosshair;
+      /* Silver chrome pointer — data URI loads reliably; SVG in /public is the editable source */
       --cursor-pointer: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2232%22%20height%3D%2232%22%20viewBox%3D%220%200%2032%2032%22%3E%3Cdefs%3E%3ClinearGradient%20id%3D%22b%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%22100%25%22%20y2%3D%22100%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23f8fafc%22%2F%3E%3Cstop%20offset%3D%2226%25%22%20stop-color%3D%22%23b4bccf%22%2F%3E%3Cstop%20offset%3D%2248%25%22%20stop-color%3D%22%2364748b%22%2F%3E%3Cstop%20offset%3D%2270%25%22%20stop-color%3D%22%239aa5b8%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%233f4f63%22%2F%3E%3C%2FlinearGradient%3E%3ClinearGradient%20id%3D%22h%22%20x1%3D%220%25%22%20y1%3D%220%25%22%20x2%3D%2260%25%22%20y2%3D%220%25%22%3E%3Cstop%20offset%3D%220%25%22%20stop-color%3D%22%23ffffff%22%20stop-opacity%3D%220.92%22%2F%3E%3Cstop%20offset%3D%22100%25%22%20stop-color%3D%22%23ffffff%22%20stop-opacity%3D%220.06%22%2F%3E%3C%2FlinearGradient%3E%3C%2Fdefs%3E%3Cpath%20fill%3D%22%23020617%22%20opacity%3D%220.5%22%20d%3D%22M9.35%206.75%20L9.35%2025.75%20L14.55%2020.45%20L18.35%2029.75%20L21.55%2028.45%20L17.75%2019.05%20L23.85%2019.05%20Z%22%2F%3E%3Cpath%20fill%3D%22%23050508%22%20d%3D%22M8%205.5%20L8%2024.5%20L13.2%2019.2%20L17%2028.5%20L20.2%2027.2%20L16.4%2017.8%20L22.5%2017.8%20Z%22%2F%3E%3Cpath%20fill%3D%22url(%23b)%22%20stroke%3D%22%23e8ecf4%22%20stroke-width%3D%220.9%22%20stroke-linejoin%3D%22round%22%20d%3D%22M8%206%20L8%2024%20L13%2019%20L16.5%2028%20L20%2026.5%20L16.5%2017%20L22%2017%20Z%22%2F%3E%3Cpath%20fill%3D%22url(%23h)%22%20d%3D%22M9.35%207.85%20L9.35%2021.2%20L12.55%2017.85%20L15.1%2025.2%20L17.35%2024.35%20L14.35%2015.85%20L19.35%2015.85%20Z%22%20opacity%3D%220.48%22%2F%3E%3C%2Fsvg%3E") 8 6, url("public/chrome-cursor-pointer.svg") 8 6, pointer;
     }
 
     *, *::before, *::after { box-sizing: border-box; }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+      cursor: var(--cursor-pointer);
+    }
+
+    button {
+      cursor: inherit;
+    }
 
     body {
       margin: 0;
-      cursor: var(--cursor-default);
+      cursor: var(--cursor-pointer);
       font-family: var(--font-body);
       font-size: 1.0625rem;
       line-height: 1.65;
@@ -210,7 +222,6 @@
       background: linear-gradient(180deg, #4b5368 0%, #2a3040 100%);
       border: 1px solid rgba(255, 255, 255, 0.2);
       color: var(--chrome-hi);
-      cursor: var(--cursor-pointer);
     }
 
     .win98__btn:active { opacity: 0.9; }
@@ -267,6 +278,26 @@
       background: rgba(0, 0, 0, 0.5);
       color: var(--chrome-mid);
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      gap: 0.35em 0.55em;
+    }
+
+    .under-construction__credit {
+      letter-spacing: 0.12em;
+      font-weight: 600;
+      text-transform: none;
+      color: var(--chrome-shine);
+      text-decoration: underline;
+      text-decoration-color: rgba(203, 213, 225, 0.35);
+      text-underline-offset: 2px;
+    }
+
+    .under-construction__credit:hover {
+      color: var(--chrome-hi);
+      text-decoration-color: rgba(228, 231, 240, 0.45);
     }
 
     .main-title {
@@ -339,15 +370,6 @@
       -webkit-background-clip: text;
       background-clip: text;
       color: transparent;
-    }
-
-    .visitor-line {
-      text-align: center;
-      margin: 0 0 10px;
-      font-family: var(--font-body);
-      font-style: italic;
-      font-size: 1.05rem;
-      color: var(--editorial-muted);
     }
 
     .tagline {
@@ -463,16 +485,10 @@
     .box--yellow { border-color: rgba(255, 255, 255, 0.1); }
     .box--yellow .box__head { background: rgba(255, 255, 255, 0.05); color: var(--chrome-hi); }
 
-    .box--cyan { border-color: rgba(255, 255, 255, 0.1); }
-    .box--cyan .box__head { background: rgba(255, 255, 255, 0.04); color: var(--chrome-hi); }
-
-    .box--lime { border-color: rgba(255, 255, 255, 0.1); }
-    .box--lime .box__head { background: rgba(255, 255, 255, 0.05); color: var(--chrome-hi); }
-
     .box--blue { border-color: rgba(165, 180, 252, 0.25); }
     .box--blue .box__head { background: linear-gradient(90deg, rgba(80, 96, 160, 0.35), rgba(255, 255, 255, 0.03)); color: var(--chrome-hi); }
 
-    /* The Set: no outer box frame — iPod shell (.ipod-set) is the only chrome */
+    /* The Setlist: no outer box frame — iPod shell (.ipod-set) is the only chrome */
     #the-set-section.box {
       border: 0;
       background: transparent;
@@ -485,15 +501,19 @@
 
     #the-set-section .box__body {
       padding: 0;
+      display: flex;
+      flex-direction: column;
+      /* Fills space so the player row can sit on the bottom chrome of the section */
+      min-height: clamp(300px, 46vh, 540px);
     }
 
-    /* —— iPod set list (The Set) —— */
+    /* —— iPod set list (The Setlist) —— */
     .ipod-set {
       width: 100%;
       max-width: none;
       margin: 0;
-      padding: 14px 14px 18px;
-      border-radius: 20px;
+      padding: 14px 14px 0;
+      border-radius: 0;
       background: linear-gradient(165deg, rgba(18, 20, 28, 0.98) 0%, var(--void-soft) 45%, var(--void) 100%);
       border: 1px solid var(--editorial-line);
       box-shadow:
@@ -502,61 +522,8 @@
       display: flex;
       flex-direction: column;
       gap: 0;
-    }
-
-    .ipod-set__status {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      padding: 0 4px 10px;
-      font-family: var(--font-display);
-      font-size: 0.52rem;
-      font-weight: 600;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: var(--editorial-muted);
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .ipod-set__battery {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      letter-spacing: 0.08em;
-    }
-
-    .ipod-set__battery-icon {
-      display: inline-block;
-      width: 22px;
-      height: 10px;
-      border-radius: 2px;
-      border: 1px solid rgba(255, 255, 255, 0.25);
-      vertical-align: middle;
-      position: relative;
-      box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
-    }
-
-    .ipod-set__battery-icon::before {
-      content: "";
-      position: absolute;
-      left: 2px;
-      top: 2px;
-      bottom: 2px;
-      width: 72%;
-      border-radius: 1px;
-      background: linear-gradient(90deg, rgba(200, 208, 228, 0.5), rgba(139, 147, 168, 0.55));
-    }
-
-    .ipod-set__battery-icon::after {
-      content: "";
-      position: absolute;
-      right: -3px;
-      top: 50%;
-      transform: translateY(-50%);
-      width: 2px;
-      height: 4px;
-      border-radius: 0 1px 1px 0;
-      background: rgba(255, 255, 255, 0.25);
+      flex: 1 1 auto;
+      min-height: 0;
     }
 
     .ipod-set__header {
@@ -601,8 +568,94 @@
     }
 
     .ipod-set__titles {
+      position: relative;
+      align-self: stretch;
       min-width: 0;
       flex: 1;
+    }
+
+    .ipod-set__titles-stack--idle {
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 6px;
+      transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ipod-set__titles-stack--idle .ipod-set__sub {
+      margin-top: 0;
+    }
+
+    .ipod-set__titles-stack--np {
+      position: absolute;
+      left: 0;
+      right: 0;
+      top: 0;
+      display: flex;
+      flex-direction: column-reverse;
+      align-items: flex-start;
+      gap: 4px;
+      opacity: 0;
+      transform: translateY(10px);
+      pointer-events: none;
+      transition: opacity 0.38s ease, transform 0.38s cubic-bezier(0.22, 1, 0.36, 1);
+    }
+
+    .ipod-set__titles--playing .ipod-set__titles-stack--idle {
+      opacity: 0;
+      transform: translateY(-8px);
+      pointer-events: none;
+    }
+
+    .ipod-set__titles--playing .ipod-set__titles-stack--np {
+      opacity: 1;
+      transform: translateY(0);
+      pointer-events: auto;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ipod-set__titles-stack--idle,
+      .ipod-set__titles-stack--np {
+        transition: none !important;
+      }
+
+      .ipod-set__titles--playing .ipod-set__titles-stack--idle {
+        opacity: 0;
+        transform: none;
+      }
+
+      .ipod-set__titles--playing .ipod-set__titles-stack--np {
+        opacity: 1;
+        transform: none;
+      }
+
+      .ipod-set__titles:not(.ipod-set__titles--playing) .ipod-set__titles-stack--np {
+        opacity: 0 !important;
+        transform: none !important;
+      }
+    }
+
+    .ipod-set__headline--track {
+      text-transform: none;
+      letter-spacing: 0.02em;
+      font-family: var(--font-body);
+      font-size: 1.05rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: var(--editorial-ink);
+    }
+
+    .ipod-set__sub--now-playing {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 0.52rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--editorial-muted);
     }
 
     .ipod-set__headline {
@@ -626,53 +679,66 @@
       color: var(--editorial-muted);
     }
 
-    .ipod-now-playing {
-      padding: 10px 4px 12px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    /* —— Player row: transport + progress on one line —— */
+    .ipod-set__player-row {
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 12px;
+      width: 100%;
+      /* Vertical padding lives here so the shell can be flush to the bottom border */
+      padding: 9px 0 12px;
+      flex-shrink: 0;
+      margin-top: auto;
     }
 
-    #ipod-now-playing-root {
-      transition: opacity 0.45s ease, transform 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+    .ipod-set__player-row .ipod-transport {
+      align-self: center;
     }
 
-    #ipod-now-playing-root:not(.ipod-now-playing--open):not([hidden]) {
-      opacity: 0;
-      transform: translateY(-12px);
+    .ipod-set__progress-wrap {
+      padding: 4px 4px 4px;
+      margin-top: 0;
+      border-top: none;
     }
 
-    #ipod-now-playing-root.ipod-now-playing--open {
-      opacity: 1;
-      transform: translateY(0);
+    .ipod-set__player-row .ipod-set__progress-wrap {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-self: center;
+      flex: 1;
+      min-width: 0;
+      padding: 4px 4px 4px 12px;
+      margin-left: 0;
+      border-left: 1px solid rgba(255, 255, 255, 0.06);
     }
 
-    @media (prefers-reduced-motion: reduce) {
-      #ipod-now-playing-root:not([hidden]) {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
-      }
+    .ipod-set__player-row .ipod-progress {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      gap: 4px;
+      width: 100%;
     }
 
-    .ipod-now-playing__label-row {
-      margin-bottom: 4px;
+    .ipod-progress__track-host {
+      position: relative;
+      padding: 5px 0;
+      margin: 0;
     }
 
-    .ipod-now-playing__label {
-      font-family: var(--font-display);
-      font-size: 0.52rem;
-      font-weight: 600;
-      letter-spacing: 0.14em;
-      text-transform: uppercase;
-      color: var(--editorial-muted);
+    .ipod-set__player-row .ipod-progress__track-host {
+      display: flex;
+      align-items: center;
+      min-height: 36px;
+      padding: 0;
     }
 
-    .ipod-now-playing__title {
-      font-family: var(--font-body);
-      font-weight: 600;
-      font-size: 1.05rem;
-      line-height: 1.3;
-      color: var(--editorial-ink);
-      margin-bottom: 10px;
+    .ipod-set__player-row .ipod-progress__track {
+      flex: 1;
+      min-width: 0;
+      width: 100%;
     }
 
     .ipod-progress__track {
@@ -696,168 +762,148 @@
       }
     }
 
+    .ipod-progress__knob {
+      position: absolute;
+      left: 0%;
+      top: 50%;
+      width: 7px;
+      height: 7px;
+      margin-left: 0;
+      border-radius: 50%;
+      background: #f4f6fb;
+      box-shadow:
+        0 0 0 1px rgba(0, 0, 0, 0.35),
+        0 1px 2px rgba(0, 0, 0, 0.45);
+      transform: translate(-50%, -50%);
+      pointer-events: none;
+      z-index: 2;
+      transition: left 0.12s linear;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .ipod-progress__knob {
+        transition: none;
+      }
+    }
+
     .ipod-progress__times {
       display: flex;
       justify-content: space-between;
+      align-items: center;
       margin-top: 6px;
+      min-height: 1.15em;
       font-family: var(--font-mono);
       font-size: 0.75rem;
       color: var(--editorial-muted);
     }
 
+    .ipod-set__player-row .ipod-progress__times {
+      margin-top: 0;
+      font-size: 0.68rem;
+    }
+
+    .ipod-progress--idle .ipod-progress__time {
+      visibility: hidden;
+    }
+
     .ipod-set__list-wrap {
-      max-height: min(52vh, 340px);
+      flex: 1 1 auto;
+      min-height: 0;
       overflow-y: auto;
       margin: 0 -4px;
       padding: 0 4px;
       -webkit-overflow-scrolling: touch;
     }
 
-    .ipod-set__list-wrap::-webkit-scrollbar {
-      width: 6px;
-    }
-
-    .ipod-set__list-wrap::-webkit-scrollbar-thumb {
-      background: rgba(255, 255, 255, 0.12);
-      border-radius: 3px;
-    }
-
-    /* —— Click wheel —— */
-    .ipod-wheel {
-      position: relative;
-      width: min(220px, 72vw);
-      height: min(220px, 72vw);
-      margin: 18px auto 4px;
-      flex-shrink: 0;
-    }
-
-    .ipod-wheel__chrome {
-      position: absolute;
-      inset: 0;
-      border-radius: 50%;
-      pointer-events: none;
-      border: 1px solid rgba(255, 255, 255, 0.14);
-      background: radial-gradient(circle at 50% 35%, rgba(60, 68, 92, 0.5) 0%, rgba(10, 12, 18, 0.95) 62%);
-      box-shadow: inset 0 0 40px rgba(0, 0, 0, 0.5);
-    }
-
-    .ipod-wheel__glyph {
-      position: absolute;
-      font-family: var(--font-display);
-      font-size: 0.48rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: var(--editorial-muted);
-    }
-
-    .ipod-wheel__glyph--menu {
-      top: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .ipod-wheel__glyph--prev {
-      left: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.85rem;
-      letter-spacing: 0;
-    }
-
-    .ipod-wheel__glyph--next {
-      right: 10px;
-      top: 50%;
-      transform: translateY(-50%);
-      font-size: 0.85rem;
-      letter-spacing: 0;
-    }
-
-    .ipod-wheel__glyph--pp {
-      bottom: 10px;
-      left: 50%;
-      transform: translateX(-50%);
-      font-size: 0.55rem;
-      letter-spacing: 0.02em;
-    }
-
-    .ipod-wheel__ring-hit {
-      position: absolute;
-      z-index: 2;
-      margin: 0;
-      padding: 0;
-      border: 0;
-      background: transparent;
-      color: transparent;
-      cursor: var(--cursor-pointer);
-      min-width: 48px;
-      min-height: 48px;
-    }
-
-    .ipod-wheel__ring-hit:focus-visible {
-      outline: 2px solid var(--accent-cool);
-      outline-offset: 2px;
-    }
-
-    .ipod-wheel__ring-hit--menu {
-      top: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .ipod-wheel__ring-hit--prev {
-      left: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .ipod-wheel__ring-hit--next {
-      right: 0;
-      top: 50%;
-      transform: translateY(-50%);
-    }
-
-    .ipod-wheel__ring-hit--pp {
-      bottom: 0;
-      left: 50%;
-      transform: translateX(-50%);
-    }
-
-    .ipod-wheel__center {
-      position: absolute;
-      z-index: 3;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-      width: 88px;
-      height: 88px;
-      min-width: 88px;
-      min-height: 88px;
-      border-radius: 50%;
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      background: linear-gradient(165deg, rgba(50, 56, 72, 0.95), rgba(8, 10, 16, 0.98));
-      box-shadow:
-        inset 0 1px 0 rgba(255, 255, 255, 0.1),
-        0 6px 16px rgba(0, 0, 0, 0.45);
-      cursor: var(--cursor-pointer);
+    /* —— Transport: flat circular controls —— */
+    .ipod-transport {
       display: flex;
       align-items: center;
       justify-content: center;
+      gap: clamp(10px, 3vw, 18px);
+      margin: 0;
+      flex-shrink: 0;
+      padding: 4px 4px;
+    }
+
+    .ipod-transport__btn {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      border-radius: 50%;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: var(--cursor-pointer);
+      transition: background-color 0.14s ease, border-color 0.14s ease, color 0.14s ease, opacity 0.14s ease, transform 0.12s ease;
+    }
+
+    .ipod-transport__btn:not(.ipod-transport__btn--play) {
+      width: 36px;
+      height: 36px;
+      min-width: 36px;
+      min-height: 36px;
+      border: 1px solid rgba(148, 163, 184, 0.35);
+      background: rgba(255, 255, 255, 0.04);
+      box-shadow: none;
+      color: rgba(196, 204, 224, 0.88);
+    }
+
+    .ipod-transport__btn:not(.ipod-transport__btn--play):hover {
+      border-color: rgba(199, 210, 254, 0.5);
+      background: rgba(255, 255, 255, 0.08);
       color: var(--chrome-hi);
     }
 
-    .ipod-wheel__center:hover {
-      border-color: rgba(165, 180, 252, 0.35);
+    .ipod-transport__btn:not(.ipod-transport__btn--play):active {
+      transform: scale(0.97);
+      opacity: 0.92;
     }
 
-    .ipod-wheel__center:focus-visible {
+    .ipod-transport__btn:focus-visible {
       outline: 2px solid var(--accent-cool);
       outline-offset: 3px;
     }
 
-    .ipod-wheel__center-icon {
-      font-size: 1.1rem;
+    .ipod-transport__btn--play {
+      width: 38px;
+      height: 38px;
+      min-width: 38px;
+      min-height: 38px;
+      border: 1px solid rgba(165, 180, 252, 0.45);
+      color: var(--chrome-hi);
+      background: rgba(99, 102, 241, 0.28);
+      box-shadow: none;
+    }
+
+    .ipod-transport__btn--play:hover {
+      border-color: rgba(199, 210, 254, 0.6);
+      background: rgba(129, 140, 248, 0.38);
+    }
+
+    .ipod-transport__btn--play:active {
+      transform: scale(0.97);
+      opacity: 0.94;
+    }
+
+    .ipod-transport__icon {
+      display: block;
       line-height: 1;
+      font-size: 1.2rem;
+      margin-left: 3px;
+      filter: none;
+    }
+
+    .ipod-transport__svg {
+      display: block;
+      width: 18px;
+      height: 18px;
+      filter: none;
+    }
+
+    .ipod-transport__btn--play .ipod-transport__icon {
+      font-size: 1.08rem;
       margin-left: 2px;
     }
 
@@ -876,7 +922,7 @@
     .setlist th,
     .setlist td { padding: 12px 12px; text-align: left; border-bottom: 1px solid var(--editorial-line); }
 
-    .setlist tr { cursor: var(--cursor-pointer); transition: background 0.18s ease; }
+    .setlist tr { transition: background 0.18s ease; }
 
     .setlist tr:hover { background: rgba(203, 213, 225, 0.06); }
 
@@ -908,23 +954,6 @@
       display: block;
       font-weight: 600;
       color: var(--editorial-ink);
-    }
-
-    .setlist--ipod tr.is-playing .setlist-track__name::before {
-      content: "▶ ";
-      color: var(--chrome-hi);
-      font-size: 0.65em;
-    }
-
-    .setlist-track__source {
-      display: block;
-      margin-top: 3px;
-      font-family: var(--font-ui);
-      font-size: 0.65rem;
-      font-weight: 500;
-      letter-spacing: 0.04em;
-      color: var(--editorial-muted);
-      line-height: 1.35;
     }
 
     .setlist--ipod .setlist__badge-cell {
@@ -1113,7 +1142,6 @@
       align-items: center;
       justify-content: center;
       text-align: center;
-      cursor: var(--cursor-pointer);
       border: 1px solid rgba(255, 255, 255, 0.15);
       background: rgba(255, 255, 255, 0.05);
       color: var(--editorial-muted);
@@ -1147,6 +1175,12 @@
     .badges .share-btn:focus-visible {
       outline: 2px solid rgba(165, 180, 252, 0.9);
       outline-offset: 2px;
+    }
+
+    .badges .share-btn.share-btn--tweet {
+      text-transform: none;
+      letter-spacing: 0.04em;
+      font-size: 0.44rem;
     }
 
     .share-btn.copied {
@@ -1198,7 +1232,6 @@
         0 14px 28px rgba(35, 22, 6, 0.35),
         0 28px 52px rgba(0, 0, 0, 0.48);
       transition: transform 0.28s ease, box-shadow 0.28s ease;
-      cursor: var(--cursor-pointer);
       outline: none;
     }
 
@@ -1460,7 +1493,6 @@
       width: 100%;
       max-width: none;
       transform: none;
-      cursor: default;
       pointer-events: none;
     }
 
@@ -1559,7 +1591,7 @@
     .gb-modal__dialog {
       position: relative;
       z-index: 1;
-      width: min(440px, 100%);
+      width: min(472px, 100%);
       max-height: min(88vh, 640px);
       overflow: auto;
     }
@@ -1643,7 +1675,6 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      cursor: var(--cursor-pointer);
       background: linear-gradient(180deg, #e8ecf4 0%, #7c8498 100%);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #0a0a0e;
@@ -1681,48 +1712,157 @@
     }
 
     .gb-modal__list {
+      --gb-line: 32px;
       list-style: none;
       margin: 0 0 18px;
-      padding: 0;
-      max-height: min(38vh, 280px);
+      padding: 10px 14px 14px 38px;
+      max-height: min(40vh, 300px);
       overflow-y: auto;
-      border: 1px solid rgba(255, 255, 255, 0.1);
-      background: rgba(0, 0, 0, 0.35);
+      border-radius: 3px;
+      border: 1px solid rgba(42, 38, 32, 0.35);
+      box-shadow:
+        inset 0 0 0 1px rgba(255, 255, 255, 0.45),
+        inset 0 1px 12px rgba(62, 54, 40, 0.08),
+        0 10px 28px rgba(0, 0, 0, 0.35);
+      background-color: var(--gb-parchment);
+      background-image:
+        linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 21px,
+          var(--gb-margin-line) 21px,
+          var(--gb-margin-line) 23px,
+          transparent 23px
+        ),
+        repeating-linear-gradient(
+          transparent 0,
+          transparent calc(var(--gb-line) - 1px),
+          rgba(74, 68, 58, 0.11) calc(var(--gb-line) - 1px),
+          rgba(74, 68, 58, 0.11) var(--gb-line)
+        ),
+        linear-gradient(165deg, rgba(255, 255, 255, 0.5) 0%, transparent 42%);
+      background-size:
+        100% 100%,
+        100% var(--gb-line),
+        100% 100%;
+      background-position: 0 0, 0 10px, 0 0;
+      background-repeat: no-repeat, repeat, no-repeat;
     }
 
     .gb-modal__list:empty::after {
       content: "No signatures yet — be the first!";
       display: block;
-      padding: 16px 14px;
-      font-size: 0.9rem;
-      color: var(--editorial-muted);
+      padding: 20px 12px 22px;
+      min-height: calc(var(--gb-line) * 4);
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      line-height: var(--gb-line);
+      color: var(--gb-parchment-muted);
       text-align: center;
     }
 
     .gb-modal__item {
-      padding: 12px 14px;
-      border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+      position: relative;
+      padding: 8px 0 10px;
+      min-height: var(--gb-line);
+      border-bottom: 1px solid rgba(74, 68, 58, 0.12);
     }
 
     .gb-modal__item:last-child {
       border-bottom: none;
+      padding-bottom: 4px;
+    }
+
+    .gb-modal__item--latest {
+      background: linear-gradient(90deg, rgba(255, 248, 220, 0.88) 0%, transparent 88%);
+      border-radius: 2px;
+      padding-top: 10px;
+      padding-bottom: 12px;
+      border-bottom-color: rgba(74, 68, 58, 0.16);
+    }
+
+    .gb-modal__item--older .gb-modal__name {
+      opacity: 0.9;
+    }
+
+    .gb-modal__meta {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin: 0 0 2px;
+      min-height: calc(var(--gb-line) - 8px);
+      min-width: 0;
+    }
+
+    .gb-modal__meta-num {
+      font-family: var(--font-mono);
+      font-size: 0.95rem;
+      color: var(--gb-parchment-muted);
+      letter-spacing: 0.02em;
     }
 
     .gb-modal__name {
-      font-family: var(--font-display);
-      font-size: 0.68rem;
-      font-weight: 700;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      color: var(--chrome-hi);
+      font-family: var(--font-signature);
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.01em;
+      text-transform: none;
+      line-height: 1.15;
+      color: var(--gb-parchment-ink);
       margin: 0 0 4px;
+    }
+
+    .gb-modal__item--latest .gb-modal__name {
+      font-size: 1.85rem;
+      font-weight: 700;
+    }
+
+    .gb-modal__item--recent .gb-modal__name {
+      font-size: 1.45rem;
+    }
+
+    .gb-modal__item--older .gb-modal__name {
+      font-size: 1.2rem;
+      font-weight: 500;
     }
 
     .gb-modal__when {
       font-family: var(--font-mono);
-      font-size: 0.95rem;
-      color: var(--editorial-muted);
+      font-size: 0.82rem;
+      color: var(--gb-parchment-muted);
       margin: 0;
+      text-align: right;
+      min-width: 0;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+    }
+
+    .gb-modal__song {
+      font-family: var(--font-ui);
+      font-size: 0.9rem;
+      font-weight: 500;
+      font-style: italic;
+      line-height: 1.45;
+      color: var(--gb-parchment-ink);
+      margin: 0;
+      opacity: 0.92;
+    }
+
+    .gb-modal__song::before {
+      content: "“";
+      opacity: 0.75;
+    }
+
+    .gb-modal__song::after {
+      content: "”";
+      opacity: 0.75;
+    }
+
+    .gb-modal__item--older .gb-modal__song {
+      font-size: 0.84rem;
+      opacity: 0.85;
     }
 
     .gb-modal__close-wrap {
@@ -1820,18 +1960,58 @@
     }
 
     .guestbook {
-      border: 1px solid rgba(255, 255, 255, 0.12);
-      padding: 18px;
+      border: 1px dashed rgba(255, 255, 255, 0.22);
+      padding: 18px 16px;
       text-align: center;
       margin-top: 4px;
-      background: rgba(0, 0, 0, 0.35);
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 16px,
+          var(--gb-margin-line) 16px,
+          var(--gb-margin-line) 18px,
+          transparent 18px
+        ),
+        linear-gradient(180deg, var(--gb-parchment) 0%, var(--gb-parchment-deep) 100%);
+      background-size: 100% 100%, 100% 100%;
+      background-repeat: no-repeat;
+      border-radius: 4px;
+      box-shadow: inset 0 0 0 1px rgba(42, 38, 32, 0.12);
     }
 
     .guestbook--merged {
-      border: none;
-      background: transparent;
+      border: 1px dashed rgba(255, 255, 255, 0.2);
+      background:
+        linear-gradient(
+          90deg,
+          transparent 0,
+          transparent 16px,
+          var(--gb-margin-line) 16px,
+          var(--gb-margin-line) 18px,
+          transparent 18px
+        ),
+        linear-gradient(180deg, rgba(242, 234, 212, 0.22) 0%, rgba(232, 223, 202, 0.12) 100%);
       margin-top: 0;
-      padding: 16px 0 0;
+      padding: 18px 14px 16px;
+    }
+
+    .guestbook__invite {
+      margin: 0;
+      font-family: var(--font-ui);
+      font-size: 0.95rem;
+      line-height: 1.5;
+      color: var(--editorial-ink);
+    }
+
+    .guestbook__script {
+      margin: 6px 0 0;
+      font-family: var(--font-signature);
+      font-size: 1.65rem;
+      font-weight: 600;
+      line-height: 1.2;
+      color: rgba(232, 236, 245, 0.88);
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.45);
     }
 
     .guestbook button {
@@ -1842,7 +2022,6 @@
       font-weight: 700;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      cursor: var(--cursor-pointer);
       background: linear-gradient(180deg, #e8ecf4 0%, #7c8498 100%);
       border: 1px solid rgba(255, 255, 255, 0.3);
       color: #0a0a0e;
@@ -1862,7 +2041,6 @@
     .vevo-card {
       border: 1px solid rgba(255, 255, 255, 0.1);
       padding: 16px 14px;
-      cursor: var(--cursor-pointer);
       transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
       text-decoration: none;
       color: inherit;
@@ -1907,7 +2085,64 @@
       flex-wrap: wrap;
       gap: 10px;
       justify-content: center;
+      align-items: center;
       margin-top: 20px;
+    }
+
+    .badges-visitor {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+      margin-top: 18px;
+      padding: 0;
+      border: none;
+      background: none;
+      box-sizing: border-box;
+    }
+
+    .badges-visitor__label {
+      margin: 0;
+      font-family: var(--font-display);
+      font-size: 0.38rem;
+      font-weight: 600;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: var(--editorial-muted);
+      line-height: 1;
+    }
+
+    .badges-visitor .hit-counter--badges {
+      gap: 0.12em;
+      margin: 0;
+      opacity: 0.92;
+    }
+
+    .badges-visitor .hit-counter--badges .hit-digit {
+      width: auto;
+      min-width: 0.55em;
+      height: auto;
+      border: none;
+      border-radius: 0;
+      background: none;
+      box-shadow: none;
+      perspective: none;
+    }
+
+    .badges-visitor .hit-counter--badges .hit-digit__inner {
+      font-size: 1.35rem;
+      font-weight: 600;
+      text-shadow: 0 0 14px rgba(200, 210, 255, 0.22);
+    }
+
+    @media (max-width: 420px) {
+      .badges-visitor .hit-counter--badges {
+        gap: 0.08em;
+      }
+      .badges-visitor .hit-counter--badges .hit-digit__inner {
+        font-size: 1.15rem;
+      }
     }
 
     .badge-88 {
@@ -1938,6 +2173,50 @@
       padding: 2px 5px;
     }
 
+    /* —— Cursor visitor tag (fine pointer only; silver chrome, not gold) —— */
+    .cursor-visitor-tag {
+      position: fixed;
+      left: 0;
+      top: 0;
+      z-index: 10050;
+      pointer-events: none;
+      padding: 5px 11px 6px;
+      border-radius: 5px;
+      font-family: var(--font-ui);
+      font-size: 0.65rem;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: #f1f5f9;
+      text-shadow: 0 1px 2px rgba(0, 0, 0, 0.55);
+      background: linear-gradient(165deg, #7a8498 0%, #4a5266 42%, #2a3042 100%);
+      border: 1px solid rgba(226, 232, 240, 0.38);
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.28),
+        inset 0 -1px 0 rgba(0, 0, 0, 0.22),
+        0 4px 16px rgba(0, 0, 0, 0.5);
+      opacity: 0;
+      visibility: hidden;
+      transition: opacity 0.12s ease;
+    }
+
+    .cursor-visitor-tag.is-visible {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    @media (pointer: coarse) {
+      .cursor-visitor-tag {
+        display: none !important;
+      }
+    }
+
+    input:not([type="checkbox"]):not([type="radio"]):not([type="submit"]):not([type="button"]):not([type="reset"]),
+    textarea,
+    select {
+      cursor: text;
+    }
+
     /* —— Sparkles —— */
     .sparkle {
       position: fixed;
@@ -1953,7 +2232,6 @@
     }
 
     a {
-      cursor: var(--cursor-pointer);
       color: var(--accent-cool);
       text-decoration: underline;
       text-underline-offset: 3px;
@@ -1961,24 +2239,6 @@
     }
 
     a:hover { color: var(--chrome-hi); text-decoration-color: rgba(228, 231, 240, 0.55); }
-
-    @media (pointer: coarse) {
-      body { cursor: auto; }
-      a,
-      button,
-      .setlist tr,
-      .ipod-wheel__ring-hit,
-      .ipod-wheel__center,
-      .member-card,
-      .vevo-card,
-      .share-btn,
-      .video-player__action,
-      .win98__btn,
-      .guestbook button,
-      .gb-modal__submit {
-        cursor: pointer;
-      }
-    }
 
     .sr-only {
       position: absolute;
@@ -1994,6 +2254,7 @@
   </style>
 </head>
 <body>
+  <div id="cursor-visitor-tag" class="cursor-visitor-tag" aria-hidden="true"></div>
   <div
     id="photocard-modal"
     class="photocard-modal"
@@ -2028,7 +2289,7 @@
     <div class="gb-modal__dialog">
       <div class="gb-modal__chrome">
         <h2 id="guestbook-modal-title" class="gb-modal__title">Guestbook · fav FLO song</h2>
-        <p class="gb-modal__lede">Your name goes to the top of the list and saves in this browser.</p>
+        <p class="gb-modal__lede">Your name and favorite song go to the top of the list and save in this browser.</p>
         <form id="guestbook-form" class="gb-modal__form" novalidate>
           <label class="gb-modal__label" for="guestbook-name">Your name</label>
           <input
@@ -2038,6 +2299,17 @@
             name="name"
             maxlength="80"
             autocomplete="nickname"
+            required
+          />
+          <label class="gb-modal__label" for="guestbook-song">Favorite FLO song</label>
+          <input
+            id="guestbook-song"
+            class="gb-modal__input"
+            type="text"
+            name="song"
+            maxlength="120"
+            autocomplete="off"
+            placeholder="e.g. Cardboard Box"
             required
           />
           <div class="gb-modal__row">
@@ -2059,7 +2331,13 @@
   <div class="site-wrapper">
     <header class="header">
       <div class="under-construction">
-        Last updated May 2026
+        <span class="under-construction__line">Last updated May 2026</span>
+        <a
+          class="under-construction__credit"
+          href="https://twitter.com/tisebuilds"
+          target="_blank"
+          rel="noopener noreferrer"
+        >by @tisebuilds</a>
       </div>
       <h1 class="main-title">
         <span class="main-title__spin">
@@ -2137,11 +2415,6 @@
     <section class="box box--pink" id="the-set-section" aria-labelledby="ipod-set-heading">
       <div class="box__body">
         <div class="ipod-set">
-          <div class="ipod-set__status" aria-hidden="true">
-            <span class="ipod-set__status-label">IPOD</span>
-            <span class="ipod-set__battery"><span class="ipod-set__battery-icon"></span></span>
-          </div>
-
           <header class="ipod-set__header">
             <div class="ipod-set__art-wrap">
               <img
@@ -2154,35 +2427,22 @@
                 decoding="async"
               />
             </div>
-            <div class="ipod-set__titles">
-              <h2 id="ipod-set-heading" class="ipod-set__headline">The Set</h2>
-              <p class="ipod-set__sub">Live at NPR’s Tiny Desk</p>
+            <div class="ipod-set__titles" id="ipod-set-titles-root">
+              <div class="ipod-set__titles-stack ipod-set__titles-stack--idle">
+                <h2 id="ipod-set-heading" class="ipod-set__headline">The Setlist</h2>
+                <p class="ipod-set__sub" id="ipod-title-detail">
+                  <span id="ipod-title-detail-body">Live at NPR’s Tiny Desk</span>
+                </p>
+              </div>
+              <div class="ipod-set__titles-stack ipod-set__titles-stack--np" id="ipod-titles-playing" aria-hidden="true">
+                <h2 class="ipod-set__headline ipod-set__headline--track" id="ipod-np-track" aria-live="polite"></h2>
+                <p class="ipod-set__sub ipod-set__sub--now-playing" id="ipod-np-label">
+                  <span class="ipod-title-detail__blink blink" aria-hidden="true">▶</span>
+                  <span id="ipod-np-label-body">NOW PLAYING</span>
+                </p>
+              </div>
             </div>
           </header>
-
-          <div class="ipod-now-playing" id="ipod-now-playing-root" hidden>
-            <div class="ipod-now-playing__label-row">
-              <span class="ipod-now-playing__label"><span class="blink" aria-hidden="true">▶</span> NOW PLAYING</span>
-            </div>
-            <div class="ipod-now-playing__title" id="np-title">(click a track!!)</div>
-            <div class="ipod-progress" id="ipod-progress" role="group" aria-label="Playback position">
-              <div
-                class="ipod-progress__track"
-                id="ipod-progress-track"
-                role="progressbar"
-                aria-valuemin="0"
-                aria-valuemax="100"
-                aria-valuenow="0"
-                aria-valuetext="0:00 of --:--"
-              >
-                <div class="ipod-progress__fill" id="ipod-progress-fill"></div>
-              </div>
-              <div class="ipod-progress__times">
-                <span id="ipod-time-current" class="ipod-progress__time">0:00</span>
-                <span id="ipod-time-total" class="ipod-progress__time">--:--</span>
-              </div>
-            </div>
-          </div>
 
           <div class="ipod-set__list-wrap" id="ipod-setlist-scroll">
             <table class="setlist setlist--ipod">
@@ -2198,7 +2458,6 @@
                   <td class="setlist__num">01</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">Cardboard Box</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--single">EP</span></td>
                 </tr>
@@ -2206,7 +2465,6 @@
                   <td class="setlist__num">02</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">AAA</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
                 </tr>
@@ -2214,7 +2472,6 @@
                   <td class="setlist__num">03</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">FLO’s Interlude</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Set</span></td>
                 </tr>
@@ -2222,7 +2479,6 @@
                   <td class="setlist__num">04</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">On &amp; On</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
                 </tr>
@@ -2230,7 +2486,6 @@
                   <td class="setlist__num">05</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">Get It Till I'm Gone</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
                 </tr>
@@ -2238,7 +2493,6 @@
                   <td class="setlist__num">06</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">Shoulda Woulda Coulda</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--album">Album</span></td>
                 </tr>
@@ -2246,7 +2500,6 @@
                   <td class="setlist__num">07</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">Therapy at the Club</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--new">NEW!!!</span></td>
                 </tr>
@@ -2254,7 +2507,6 @@
                   <td class="setlist__num">08</td>
                   <td class="setlist__track-cell">
                     <span class="setlist-track__name">HaterBooth</span>
-                    <span class="setlist-track__source">Live at NPR’s Tiny Desk · 2026</span>
                   </td>
                   <td class="setlist__badge-cell"><span class="badge badge--new">NEW!!!</span></td>
                 </tr>
@@ -2262,20 +2514,45 @@
             </table>
           </div>
 
-          <div class="ipod-wheel" role="group" aria-label="Setlist player controls">
-            <div class="ipod-wheel__chrome" aria-hidden="true">
-              <span class="ipod-wheel__glyph ipod-wheel__glyph--menu">MENU</span>
-              <span class="ipod-wheel__glyph ipod-wheel__glyph--prev" aria-hidden="true">«</span>
-              <span class="ipod-wheel__glyph ipod-wheel__glyph--next" aria-hidden="true">»</span>
-              <span class="ipod-wheel__glyph ipod-wheel__glyph--pp" aria-hidden="true">❚❚</span>
+          <div class="ipod-set__player-row">
+            <div class="ipod-transport" role="group" aria-label="Playback controls">
+              <button type="button" class="ipod-transport__btn" id="ipod-wheel-prev" aria-label="Previous track">
+                <svg class="ipod-transport__svg" viewBox="0 0 40 24" aria-hidden="true">
+                  <path fill="currentColor" d="M36 3v18L20 12 36 3z M20 3v18L4 12 20 3z" />
+                </svg>
+              </button>
+              <button type="button" class="ipod-transport__btn ipod-transport__btn--play" id="ipod-wheel-center" aria-label="Play or pause">
+                <span class="ipod-transport__icon" id="ipod-wheel-center-icon" aria-hidden="true">▶</span>
+              </button>
+              <button type="button" class="ipod-transport__btn" id="ipod-wheel-next" aria-label="Next track">
+                <svg class="ipod-transport__svg" viewBox="0 0 40 24" aria-hidden="true">
+                  <path fill="currentColor" d="M4 3v18l16-9L4 3z M20 3v18l16-9L20 3z" />
+                </svg>
+              </button>
             </div>
-            <button type="button" class="ipod-wheel__ring-hit ipod-wheel__ring-hit--menu" id="ipod-wheel-menu" aria-label="Scroll to setlist">MENU</button>
-            <button type="button" class="ipod-wheel__ring-hit ipod-wheel__ring-hit--prev" id="ipod-wheel-prev" aria-label="Previous track"></button>
-            <button type="button" class="ipod-wheel__ring-hit ipod-wheel__ring-hit--next" id="ipod-wheel-next" aria-label="Next track"></button>
-            <button type="button" class="ipod-wheel__ring-hit ipod-wheel__ring-hit--pp" id="ipod-wheel-pp" tabindex="-1" aria-hidden="true"></button>
-            <button type="button" class="ipod-wheel__center" id="ipod-wheel-center" aria-label="Play or pause">
-              <span class="ipod-wheel__center-icon" id="ipod-wheel-center-icon" aria-hidden="true">▶</span>
-            </button>
+
+            <div class="ipod-set__progress-wrap" id="ipod-progress-wrap">
+              <div class="ipod-progress ipod-progress--idle" id="ipod-progress" role="group" aria-label="Playback position">
+                <div class="ipod-progress__track-host">
+                  <div
+                    class="ipod-progress__track"
+                    id="ipod-progress-track"
+                    role="progressbar"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    aria-valuetext="No track loaded"
+                  >
+                    <div class="ipod-progress__fill" id="ipod-progress-fill"></div>
+                  </div>
+                  <span class="ipod-progress__knob" id="ipod-progress-knob" aria-hidden="true"></span>
+                </div>
+                <div class="ipod-progress__times" id="ipod-progress-times" aria-hidden="true">
+                  <span id="ipod-time-current" class="ipod-progress__time"></span>
+                  <span id="ipod-time-total" class="ipod-progress__time"></span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -2410,38 +2687,6 @@
       </div>
     </section>
 
-    <div class="stack">
-      <section class="box box--cyan">
-        <h2 class="box__head">About this page</h2>
-        <div class="box__body">
-          <p>I saw Cardboard Box on my FYP in 2022 and literally cried. Since then I've seen FLO 3× in NYC — Webster Hall 2023, Gov Ball 2024, Brooklyn Paramount 2025. This page is my thank-you note, written like a letter to the editor.</p>
-          <p>
-            <a href="https://tisebuilds.com" target="_blank" rel="noopener noreferrer">tisebuilds.com ↗</a>
-            ·
-            <a href="https://twitter.com/tisebuilds" target="_blank" rel="noopener noreferrer">@tisebuilds ↗</a>
-          </p>
-        </div>
-      </section>
-      <section class="box box--lime">
-        <h2 class="box__head">Stats · guestbook</h2>
-        <div class="box__body">
-          <p class="visitor-line">You are visitor</p>
-          <div class="hit-counter" id="hit-counter" aria-label="Visitor count">
-            <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
-            <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
-            <div class="hit-digit"><span class="hit-digit__inner">3</span></div>
-            <div class="hit-digit"><span class="hit-digit__inner">8</span></div>
-            <div class="hit-digit"><span class="hit-digit__inner">4</span></div>
-            <div class="hit-digit"><span class="hit-digit__inner">7</span></div>
-          </div>
-          <div class="guestbook guestbook--merged">
-            <p>Sign my guestbook!! Tell me your fav FLO song!!</p>
-            <button type="button" id="guestbook-btn">SIGN GUESTBOOK</button>
-          </div>
-        </div>
-      </section>
-    </div>
-
     <footer class="footer">
       <p><em>Not affiliated with NPR or FLO management · Fan tribute only</em></p>
       <div class="badges" role="group" aria-label="Site badges and share">
@@ -2453,10 +2698,21 @@
           href="#"
           target="_blank"
           rel="noopener noreferrer"
-        >🐦 TWEET<br/>THIS!!</a>
+        >Share on<br/>Twitter</a>
         <button type="button" class="share-btn share-btn--copy" id="copy-btn">
           📋 COPY<br/>LINK!!
         </button>
+      </div>
+      <div class="badges-visitor">
+        <p class="badges-visitor__label">Visitors</p>
+        <div class="hit-counter hit-counter--badges" id="hit-counter" aria-label="Visitor count">
+          <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
+          <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
+          <div class="hit-digit"><span class="hit-digit__inner">3</span></div>
+          <div class="hit-digit"><span class="hit-digit__inner">8</span></div>
+          <div class="hit-digit"><span class="hit-digit__inner">4</span></div>
+          <div class="hit-digit"><span class="hit-digit__inner">7</span></div>
+        </div>
       </div>
     </footer>
   </div>
@@ -2468,21 +2724,86 @@
       const SPARKLE_EMOJI = ["💿", "✦", "✧", "⋆", "✶"];
       const SPARKLE_COLORS = ["#f4f6fb", "#e4e4e7", "#d4d4d8", "#c8cbd4", "#a1a1aa", "#8b93a7", "#71717a"];
 
-      const npTitle = document.getElementById("np-title");
+      const ipodSetTitlesRoot = document.getElementById("ipod-set-titles-root");
+      const ipodSetHeading = document.getElementById("ipod-set-heading");
+      const ipodTitleDetailBody = document.getElementById("ipod-title-detail-body");
+      const ipodTitlesPlaying = document.getElementById("ipod-titles-playing");
+      const ipodNpTrack = document.getElementById("ipod-np-track");
+      const ipodTitlesIdle = ipodSetHeading ? ipodSetHeading.closest(".ipod-set__titles-stack--idle") : null;
       const npArt = document.getElementById("np-art");
       const setlistAudio = document.getElementById("setlist-audio");
       const ipodProgressFill = document.getElementById("ipod-progress-fill");
       const ipodProgressTrack = document.getElementById("ipod-progress-track");
       const ipodTimeCurrent = document.getElementById("ipod-time-current");
       const ipodTimeTotal = document.getElementById("ipod-time-total");
+      const ipodProgress = document.getElementById("ipod-progress");
+      const ipodProgressKnob = document.getElementById("ipod-progress-knob");
+      const ipodProgressTimes = document.getElementById("ipod-progress-times");
       const ipodWheelCenterIcon = document.getElementById("ipod-wheel-center-icon");
-      const ipodWheelMenu = document.getElementById("ipod-wheel-menu");
       const ipodWheelPrev = document.getElementById("ipod-wheel-prev");
       const ipodWheelNext = document.getElementById("ipod-wheel-next");
-      const ipodWheelPp = document.getElementById("ipod-wheel-pp");
       const ipodWheelCenter = document.getElementById("ipod-wheel-center");
-      const ipodSetlistScroll = document.getElementById("ipod-setlist-scroll");
-      const ipodNowPlayingRoot = document.getElementById("ipod-now-playing-root");
+
+      const IDLE_SET_HEADING = "The Setlist";
+      const IDLE_SET_DETAIL = "Live at NPR’s Tiny Desk";
+
+      function applyIpodPlayingTitles() {
+        if (!setlistPlayingRow || !ipodNpTrack) return;
+        var t = setlistPlayingRow.getAttribute("data-title");
+        if (!t) return;
+        ipodNpTrack.textContent = t;
+        if (!ipodSetTitlesRoot || !ipodTitlesPlaying) return;
+        var wasPlaying = ipodSetTitlesRoot.classList.contains("ipod-set__titles--playing");
+        if (!wasPlaying) {
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            ipodSetTitlesRoot.classList.add("ipod-set__titles--playing");
+          } else {
+            requestAnimationFrame(function () {
+              requestAnimationFrame(function () {
+                ipodSetTitlesRoot.classList.add("ipod-set__titles--playing");
+              });
+            });
+          }
+        }
+        ipodTitlesPlaying.setAttribute("aria-hidden", "false");
+        if (ipodTitlesIdle) ipodTitlesIdle.setAttribute("aria-hidden", "true");
+      }
+
+      function restoreIpodIdleTitles() {
+        if (ipodSetTitlesRoot) ipodSetTitlesRoot.classList.remove("ipod-set__titles--playing");
+        if (ipodSetHeading) ipodSetHeading.textContent = IDLE_SET_HEADING;
+        if (ipodTitleDetailBody) ipodTitleDetailBody.textContent = IDLE_SET_DETAIL;
+        if (ipodTitlesPlaying) {
+          ipodTitlesPlaying.setAttribute("aria-hidden", "true");
+          var clearNp = function () {
+            if (ipodNpTrack) ipodNpTrack.textContent = "";
+          };
+          if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+            clearNp();
+          } else {
+            window.setTimeout(clearNp, 400);
+          }
+        }
+        if (ipodTitlesIdle) ipodTitlesIdle.setAttribute("aria-hidden", "false");
+      }
+
+      function revealIpodProgressPanel() {
+        if (ipodProgress) ipodProgress.classList.remove("ipod-progress--idle");
+        if (ipodProgressTimes) ipodProgressTimes.setAttribute("aria-hidden", "false");
+      }
+
+      function applyIpodProgressIdleState() {
+        if (ipodProgress) ipodProgress.classList.add("ipod-progress--idle");
+        if (ipodProgressTimes) ipodProgressTimes.setAttribute("aria-hidden", "true");
+        if (ipodTimeCurrent) ipodTimeCurrent.textContent = "";
+        if (ipodTimeTotal) ipodTimeTotal.textContent = "";
+        if (ipodProgressFill) ipodProgressFill.style.width = "0%";
+        if (ipodProgressKnob) ipodProgressKnob.style.left = "0%";
+        if (ipodProgressTrack) {
+          ipodProgressTrack.setAttribute("aria-valuenow", "0");
+          ipodProgressTrack.setAttribute("aria-valuetext", "No track loaded");
+        }
+      }
 
       function encodeAssetPath(relPath) {
         return relPath.split("/").map(function (seg) {
@@ -2499,6 +2820,7 @@
 
       function updateIpodProgressUI() {
         if (!ipodTimeCurrent || !ipodTimeTotal || !ipodProgressFill) return;
+        if (ipodProgress && ipodProgress.classList.contains("ipod-progress--idle")) return;
         var cur = setlistAudio.currentTime || 0;
         var dur = setlistAudio.duration;
         ipodTimeCurrent.textContent = formatTime(cur);
@@ -2506,6 +2828,7 @@
           ipodTimeTotal.textContent = formatTime(dur);
           var pct = Math.min(100, Math.max(0, (cur / dur) * 100));
           ipodProgressFill.style.width = pct + "%";
+          if (ipodProgressKnob) ipodProgressKnob.style.left = pct + "%";
           if (ipodProgressTrack) {
             ipodProgressTrack.setAttribute("aria-valuenow", String(Math.round(pct)));
             ipodProgressTrack.setAttribute("aria-valuetext", formatTime(cur) + " of " + formatTime(dur));
@@ -2513,20 +2836,11 @@
         } else {
           ipodTimeTotal.textContent = "--:--";
           ipodProgressFill.style.width = "0%";
+          if (ipodProgressKnob) ipodProgressKnob.style.left = "0%";
           if (ipodProgressTrack) {
             ipodProgressTrack.setAttribute("aria-valuenow", "0");
             ipodProgressTrack.setAttribute("aria-valuetext", formatTime(cur) + " of --:--");
           }
-        }
-      }
-
-      function resetIpodProgressUI() {
-        if (ipodTimeCurrent) ipodTimeCurrent.textContent = "0:00";
-        if (ipodTimeTotal) ipodTimeTotal.textContent = "--:--";
-        if (ipodProgressFill) ipodProgressFill.style.width = "0%";
-        if (ipodProgressTrack) {
-          ipodProgressTrack.setAttribute("aria-valuenow", "0");
-          ipodProgressTrack.setAttribute("aria-valuetext", "0:00 of --:--");
         }
       }
 
@@ -2556,9 +2870,7 @@
 
       function activateSetlistRow(row, opts) {
         opts = opts || {};
-        var t = row.getAttribute("data-title");
         var rel = row.getAttribute("data-audio");
-        if (t) npTitle.textContent = t;
         if (opts.sparkle !== false) {
           applySparkleForRow(row, opts.clientX, opts.clientY);
         }
@@ -2580,7 +2892,7 @@
         });
         setlistPlayingRow = row;
         row.classList.add("is-playing");
-        resetIpodProgressUI();
+        applyIpodProgressIdleState();
         setlistAudio.pause();
         setlistAudio.src = src;
         setlistAudio.load();
@@ -2590,16 +2902,8 @@
 
       setlistAudio.addEventListener("play", function () {
         if (npArt) npArt.classList.remove("is-paused");
-        if (ipodNowPlayingRoot && ipodNowPlayingRoot.hasAttribute("hidden")) {
-          ipodNowPlayingRoot.removeAttribute("hidden");
-          if (!window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
-            requestAnimationFrame(function () {
-              requestAnimationFrame(function () {
-                ipodNowPlayingRoot.classList.add("ipod-now-playing--open");
-              });
-            });
-          }
-        }
+        applyIpodPlayingTitles();
+        revealIpodProgressPanel();
         updateIpodProgressUI();
         syncIpodWheelCenterIcon();
       });
@@ -2615,7 +2919,8 @@
           r.classList.remove("is-playing");
         });
         setlistPlayingRow = null;
-        resetIpodProgressUI();
+        applyIpodProgressIdleState();
+        restoreIpodIdleTitles();
         syncIpodWheelCenterIcon();
       });
 
@@ -2624,12 +2929,6 @@
           activateSetlistRow(row, { clientX: ev.clientX, clientY: ev.clientY });
         });
       });
-
-      if (ipodWheelMenu && ipodSetlistScroll) {
-        ipodWheelMenu.addEventListener("click", function () {
-          ipodSetlistScroll.scrollIntoView({ behavior: "smooth", block: "nearest" });
-        });
-      }
 
       function setlistRowIndex(row) {
         return getSetlistRows().indexOf(row);
@@ -2677,13 +2976,8 @@
           toggleWheelPlayPause();
         });
       }
-      if (ipodWheelPp) {
-        ipodWheelPp.addEventListener("click", function () {
-          toggleWheelPlayPause();
-        });
-      }
 
-      resetIpodProgressUI();
+      applyIpodProgressIdleState();
       syncIpodWheelCenterIcon();
 
       function burstSparkles(x, y) {
@@ -2701,8 +2995,42 @@
 
       const coarsePointer = window.matchMedia("(pointer: coarse)").matches;
 
+      /** Cursor "Visitor #N" tag — set `true` to show again */
+      var FLO_SHOW_CURSOR_VISITOR_TAG = false;
+
+      var cursorVisitorTag = document.getElementById("cursor-visitor-tag");
+      var cursorVisitorTagShown = false;
+      function floPersistedVisitorNumber() {
+        var KEY = "flo_y2k_visitor_no";
+        var min = 100001;
+        var max = 999999;
+        var n = NaN;
+        try {
+          var raw = localStorage.getItem(KEY);
+          if (raw) n = parseInt(raw, 10);
+        } catch (e0) {}
+        if (!Number.isFinite(n) || n < min || n > max) {
+          n = min + Math.floor(Math.random() * (max - min + 1));
+          try {
+            localStorage.setItem(KEY, String(n));
+          } catch (e1) {}
+        }
+        return n;
+      }
+      if (FLO_SHOW_CURSOR_VISITOR_TAG && cursorVisitorTag && !coarsePointer) {
+        cursorVisitorTag.textContent = "Visitor #" + String(floPersistedVisitorNumber());
+      }
+
       document.addEventListener("mousemove", function (e) {
         if (coarsePointer) return;
+        if (FLO_SHOW_CURSOR_VISITOR_TAG && cursorVisitorTag) {
+          cursorVisitorTag.style.left = e.clientX + 14 + "px";
+          cursorVisitorTag.style.top = e.clientY + 16 + "px";
+          if (!cursorVisitorTagShown) {
+            cursorVisitorTagShown = true;
+            cursorVisitorTag.classList.add("is-visible");
+          }
+        }
         if (Math.random() > 0.88) return;
         const s = document.createElement("div");
         s.className = "sparkle";
@@ -2885,6 +3213,7 @@
       var guestbookBtn = document.getElementById("guestbook-btn");
       var guestbookForm = document.getElementById("guestbook-form");
       var guestbookName = document.getElementById("guestbook-name");
+      var guestbookSong = document.getElementById("guestbook-song");
       var guestbookList = document.getElementById("guestbook-list");
       var guestbookStatus = document.getElementById("guestbook-status");
       var guestbookClose = document.getElementById("guestbook-close");
@@ -2932,15 +3261,33 @@
         for (var i = 0; i < rows.length; i++) {
           var row = rows[i];
           var li = document.createElement("li");
-          li.className = "gb-modal__item";
+          var tier =
+            i === 0 ? " gb-modal__item--latest" : i <= 4 ? " gb-modal__item--recent" : " gb-modal__item--older";
+          li.className = "gb-modal__item" + tier;
+
+          var meta = document.createElement("div");
+          meta.className = "gb-modal__meta";
+          var numEl = document.createElement("span");
+          numEl.className = "gb-modal__meta-num";
+          numEl.textContent = "#" + (i + 1);
+          var whenEl = document.createElement("span");
+          whenEl.className = "gb-modal__when";
+          whenEl.textContent = guestbookFormatWhen(row.at) || "—";
+          meta.appendChild(numEl);
+          meta.appendChild(whenEl);
+          li.appendChild(meta);
+
           var nameEl = document.createElement("p");
           nameEl.className = "gb-modal__name";
           nameEl.textContent = row.name;
-          var whenEl = document.createElement("p");
-          whenEl.className = "gb-modal__when";
-          whenEl.textContent = guestbookFormatWhen(row.at) || "—";
           li.appendChild(nameEl);
-          li.appendChild(whenEl);
+
+          if (row.song && String(row.song).trim()) {
+            var songEl = document.createElement("p");
+            songEl.className = "gb-modal__song";
+            songEl.textContent = String(row.song).trim();
+            li.appendChild(songEl);
+          }
           guestbookList.appendChild(li);
         }
       }
@@ -3016,8 +3363,18 @@
             return;
           }
           if (name.length > 80) name = name.slice(0, 80);
+          var rawSong = guestbookSong ? guestbookSong.value : "";
+          var song = String(rawSong || "")
+            .trim()
+            .replace(/\s+/g, " ");
+          if (!song) {
+            guestbookSetStatus("Add your favorite FLO song ✶", true);
+            if (guestbookSong) guestbookSong.focus();
+            return;
+          }
+          if (song.length > 120) song = song.slice(0, 120);
           var rows = guestbookLoad();
-          rows.unshift({ name: name, at: new Date().toISOString() });
+          rows.unshift({ name: name, song: song, at: new Date().toISOString() });
           if (rows.length > GB_MAX) rows = rows.slice(0, GB_MAX);
           guestbookSave(rows);
           guestbookRender();
@@ -3064,6 +3421,7 @@
       }
 
       function renderHitDigits(str) {
+        if (!counterEl || digitInners.length === 0) return;
         counterEl.setAttribute("aria-label", "Visitor count " + String(hit));
         for (var i = 0; i < digitInners.length; i++) {
           flipDigitInner(digitInners[i], str.charAt(i));
@@ -3071,12 +3429,15 @@
       }
 
       function tickHit() {
+        if (!counterEl || digitInners.length === 0) return;
         hit += Math.floor(Math.random() * 3) + 1;
         var str = String(hit).padStart(6, "0");
         renderHitDigits(str);
         setTimeout(tickHit, 4000 + Math.random() * 6000);
       }
-      setTimeout(tickHit, 4000 + Math.random() * 6000);
+      if (counterEl && digitInners.length > 0) {
+        setTimeout(tickHit, 4000 + Math.random() * 6000);
+      }
 
       window.addEventListener("keydown", function (e) {
         var gbm = document.getElementById("guestbook-modal");
