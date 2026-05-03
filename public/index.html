@@ -570,14 +570,16 @@
     /* —— Player dock: art + title | progress | transport —— */
     .ipod-set__player-row.ipod-dock {
       display: flex;
+      flex-wrap: nowrap;
       align-items: center;
       justify-content: space-between;
       gap: 14px;
       width: 100%;
+      min-width: 0;
       margin-top: 10px;
       padding: 10px 14px 10px 12px;
       flex-shrink: 0;
-      border-radius: 999px;
+      border-radius: 0;
       background: linear-gradient(180deg, rgba(30, 34, 48, 0.95) 0%, rgba(14, 16, 22, 0.98) 100%);
       border: 1px solid rgba(255, 255, 255, 0.08);
       box-shadow:
@@ -598,7 +600,7 @@
       flex-shrink: 0;
       width: 48px;
       height: 48px;
-      border-radius: 10px;
+      border-radius: 0;
       overflow: hidden;
       border: 1px solid rgba(255, 255, 255, 0.1);
       box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.35);
@@ -630,6 +632,72 @@
     .ipod-set__player-row .ipod-transport {
       align-self: center;
       flex-shrink: 0;
+    }
+
+    .ipod-set__player-row .ipod-transport__btn:not(.ipod-transport__btn--play) {
+      border: none;
+      background: transparent;
+      box-shadow: none;
+      border-radius: 0;
+      color: var(--editorial-muted);
+    }
+
+    .ipod-set__player-row .ipod-transport__btn:not(.ipod-transport__btn--play):hover {
+      border: none;
+      background: rgba(255, 255, 255, 0.06);
+      color: var(--chrome-hi);
+    }
+
+    .ipod-set__player-row .ipod-transport__btn:not(.ipod-transport__btn--play):active {
+      transform: scale(0.97);
+      opacity: 0.88;
+    }
+
+    .ipod-set__player-row .ipod-transport__btn--play {
+      border-radius: 50%;
+      border: 1px solid rgba(255, 255, 255, 0.38);
+      color: #0f121a;
+      background: linear-gradient(
+        152deg,
+        #ffffff 0%,
+        #e4e9f2 12%,
+        #8f99ae 36%,
+        #f2f5fb 50%,
+        #c5cede 65%,
+        #6d7688 100%
+      );
+      box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.92),
+        inset 0 -4px 10px rgba(24, 28, 42, 0.32),
+        0 2px 10px rgba(0, 0, 0, 0.42);
+    }
+
+    .ipod-set__player-row .ipod-transport__btn--play:hover {
+      border-color: rgba(255, 255, 255, 0.52);
+      background: linear-gradient(
+        152deg,
+        #ffffff 0%,
+        #eef2f9 14%,
+        #9aa6ba 38%,
+        #fafbfd 52%,
+        #d4dce8 68%,
+        #5c6576 100%
+      );
+      color: #080a10;
+    }
+
+    .ipod-set__player-row .ipod-transport__btn--play:active {
+      transform: scale(0.97);
+      opacity: 0.94;
+    }
+
+    .ipod-set__player-row .ipod-progress__track,
+    .ipod-set__player-row .ipod-progress__fill {
+      border-radius: 0;
+    }
+
+    .ipod-set__player-row .ipod-progress__knob {
+      border-radius: 0;
     }
 
     .ipod-set__progress-wrap {
@@ -703,24 +771,51 @@
 
     @media (max-width: 640px) {
       .ipod-set__player-row.ipod-dock {
-        flex-direction: column;
-        align-items: stretch;
-        border-radius: 18px;
-        padding: 12px;
-        gap: 12px;
+        flex-direction: row;
+        align-items: center;
+        border-radius: 0;
+        padding: 8px 10px 8px 8px;
+        gap: 8px;
       }
 
       .ipod-dock__left {
-        max-width: none;
+        max-width: min(30vw, 140px);
+        flex-shrink: 1;
+        gap: 6px;
+      }
+
+      .ipod-dock__art-wrap,
+      .ipod-dock__art {
+        width: 40px;
+        height: 40px;
+      }
+
+      .ipod-dock__track {
+        font-size: 0.78rem;
       }
 
       .ipod-set__player-row .ipod-set__progress-wrap {
-        width: 100%;
-        flex: 0 0 auto;
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+      }
+
+      .ipod-set__player-row .ipod-progress__bar-row {
+        gap: 4px;
+      }
+
+      .ipod-set__player-row .ipod-progress__time {
+        width: 2rem;
+        font-size: 0.62rem;
+      }
+
+      .ipod-set__player-row .ipod-progress__track-host {
+        padding: 4px 0;
       }
 
       .ipod-set__player-row .ipod-transport {
-        justify-content: center;
+        gap: 6px;
+        padding: 2px 0;
       }
     }
 
@@ -929,14 +1024,7 @@
     .setlist--ipod tbody tr.is-playing td {
       background: rgba(203, 213, 225, 0.1);
       border-bottom-color: rgba(255, 255, 255, 0.06);
-    }
-
-    .setlist--ipod tbody tr.is-playing td:first-child {
-      border-radius: 10px 0 0 10px;
-    }
-
-    .setlist--ipod tbody tr.is-playing td:last-child {
-      border-radius: 0 10px 10px 0;
+      border-radius: 0;
     }
 
     .setlist--ipod .setlist__num {
@@ -2878,7 +2966,7 @@
 
   <script>
     (function () {
-      const NPR_URL = "https://www.npr.org/2026/02/20/g-s1-97283/flo-tiny-desk-concert";
+      const SHARE_PAGE_URL = "https://flo-tinydesk-fan-tribute.vercel.app/";
 
       const SPARKLE_EMOJI = ["💿", "✦", "✧", "⋆", "✶"];
       const SPARKLE_COLORS = ["#f4f6fb", "#e4e4e7", "#d4d4d8", "#c8cbd4", "#a1a1aa", "#8b93a7", "#71717a"];
@@ -3343,7 +3431,7 @@
         }
       }
 
-      var tweet = "https://twitter.com/intent/tweet?text=" + encodeURIComponent("THE FLO Tiny Desk fan page of my dreams 💖 ") + "&url=" + encodeURIComponent(NPR_URL);
+      var tweet = "https://twitter.com/intent/tweet?text=" + encodeURIComponent("Found this FLO Tiny Desk fan page 💖 ") + "&url=" + encodeURIComponent(SHARE_PAGE_URL);
       document.getElementById("tweet-btn").href = tweet;
 
       document.getElementById("copy-btn").addEventListener("click", function () {
