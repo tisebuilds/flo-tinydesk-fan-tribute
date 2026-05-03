@@ -3245,6 +3245,13 @@
       setlistAudio.addEventListener("timeupdate", updateIpodProgressUI);
       setlistAudio.addEventListener("loadedmetadata", updateIpodProgressUI);
       setlistAudio.addEventListener("ended", function () {
+        var rows = getSetlistRows();
+        var finishedRow = setlistPlayingRow;
+        var idx = finishedRow ? rows.indexOf(finishedRow) : -1;
+        if (idx >= 0 && idx <= 6 && idx < rows.length - 1) {
+          activateSetlistRow(rows[idx + 1], { sparkle: false });
+          return;
+        }
         if (npArt) npArt.classList.add("is-paused");
         document.querySelectorAll("#setlist-body tr.is-playing").forEach(function (r) {
           r.classList.remove("is-playing");
