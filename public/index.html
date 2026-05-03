@@ -741,6 +741,22 @@
       margin: 0;
     }
 
+    .ipod-progress:not(.ipod-progress--idle) .ipod-progress__track-host {
+      cursor: pointer;
+      touch-action: none;
+    }
+
+    .ipod-progress__track-host:focus-visible {
+      outline: 2px solid var(--chrome-shine);
+      outline-offset: 2px;
+      border-radius: 4px;
+    }
+
+    .ipod-progress--scrubbing .ipod-progress__fill,
+    .ipod-progress--scrubbing .ipod-progress__knob {
+      transition: none;
+    }
+
     .ipod-set__player-row .ipod-progress__track-host {
       display: block;
       min-height: 0;
@@ -968,10 +984,12 @@
     }
 
     .ipod-transport__icon {
-      display: block;
+      display: flex;
+      align-items: center;
+      justify-content: center;
       line-height: 1;
       font-size: 1.2rem;
-      margin-left: 3px;
+      margin: 0;
       filter: none;
     }
 
@@ -984,7 +1002,11 @@
 
     .ipod-transport__btn--play .ipod-transport__icon {
       font-size: 1.08rem;
-      margin-left: 2px;
+    }
+
+    /* ▶ reads left-heavy when boxed; nudge right without affecting ❚❚ (already centered). */
+    .ipod-transport__btn--play .ipod-transport__icon--play {
+      transform: translateX(1.25px);
     }
 
     /* —— Setlist —— */
@@ -2280,24 +2302,104 @@
       color: #0a0a0e;
     }
 
-    /* —— Vevo —— */
-    .vevo-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 14px;
+    /* —— FLO LIVE carousel —— */
+    .vevo-carousel {
+      --vevo-carousel-gap: 14px;
+    }
+
+    .vevo-carousel__row {
+      display: flex;
+      flex-direction: row;
+      align-items: stretch;
+      gap: 10px;
+    }
+
+    .vevo-carousel__viewport {
+      flex: 1;
+      min-width: 0;
+      overflow: hidden;
+      container-type: inline-size;
+      container-name: vevo-live;
+    }
+
+    .vevo-carousel__track {
+      position: relative;
+      display: flex;
+      flex-direction: row;
+      gap: var(--vevo-carousel-gap);
+      transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+      will-change: transform;
+    }
+
+    .vevo-carousel__slide {
+      flex: 0 0 calc(50cqi - 7px);
+      min-width: 0;
     }
 
     @media (max-width: 600px) {
-      .vevo-grid { grid-template-columns: 1fr; }
+      .vevo-carousel__slide {
+        flex: 0 0 100cqi;
+      }
+    }
+
+    .vevo-carousel__btn {
+      flex: 0 0 auto;
+      align-self: center;
+      width: 44px;
+      height: 44px;
+      padding: 0;
+      margin: 0;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 255, 255, 0.14);
+      background: rgba(0, 0, 0, 0.35);
+      color: rgba(232, 236, 245, 0.92);
+      cursor: pointer;
+      display: grid;
+      place-items: center;
+      transition: background 0.18s ease, border-color 0.18s ease, color 0.18s ease, opacity 0.18s ease;
+    }
+
+    .vevo-carousel__btn svg {
+      width: 22px;
+      height: 22px;
+      display: block;
+    }
+
+    .vevo-carousel__btn:hover:not(:disabled) {
+      background: rgba(165, 180, 252, 0.12);
+      border-color: rgba(165, 180, 252, 0.35);
+      color: #f4f6fb;
+    }
+
+    .vevo-carousel__btn:focus-visible {
+      outline: 2px solid rgba(165, 180, 252, 0.65);
+      outline-offset: 2px;
+    }
+
+    .vevo-carousel__btn:disabled {
+      opacity: 0.28;
+      cursor: not-allowed;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vevo-carousel__track {
+        transition: none;
+      }
+    }
+
+    .vevo-carousel__slide .vevo-card {
+      height: 100%;
     }
 
     .vevo-card {
       border: 1px solid rgba(255, 255, 255, 0.1);
-      padding: 16px 14px;
+      padding: 0;
+      overflow: hidden;
       transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease;
       text-decoration: none;
       color: inherit;
-      display: block;
+      display: flex;
+      flex-direction: column;
       background: rgba(0, 0, 0, 0.25);
     }
 
@@ -2305,6 +2407,28 @@
       background: rgba(165, 180, 252, 0.08);
       border-color: rgba(165, 180, 252, 0.28);
       transform: translateY(-2px);
+    }
+
+    .vevo-card:hover .vevo-card__thumb img {
+      transform: scale(1.03);
+    }
+
+    .vevo-card__thumb {
+      aspect-ratio: 16 / 9;
+      background: #0a0a12;
+      overflow: hidden;
+    }
+
+    .vevo-card__thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.35s ease;
+    }
+
+    .vevo-card__body {
+      padding: 14px 14px 16px;
     }
 
     .vevo-card__title {
@@ -2322,6 +2446,16 @@
       letter-spacing: 0.1em;
       text-transform: uppercase;
       color: var(--editorial-muted);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .vevo-card:hover .vevo-card__thumb img {
+        transform: none;
+      }
+
+      .vevo-card__thumb img {
+        transition: none;
+      }
     }
 
     /* —— Footer —— */
@@ -2815,16 +2949,18 @@
               <div class="ipod-progress ipod-progress--idle" id="ipod-progress" role="group" aria-label="Playback position">
                 <div class="ipod-progress__bar-row" id="ipod-progress-times" aria-hidden="true" hidden>
                   <span id="ipod-time-current" class="ipod-progress__time"></span>
-                  <div class="ipod-progress__track-host">
-                    <div
-                      class="ipod-progress__track"
-                      id="ipod-progress-track"
-                      role="progressbar"
-                      aria-valuemin="0"
-                      aria-valuemax="100"
-                      aria-valuenow="0"
-                      aria-valuetext="No track loaded"
-                    >
+                  <div
+                    class="ipod-progress__track-host"
+                    id="ipod-progress-track-host"
+                    role="slider"
+                    tabindex="-1"
+                    aria-label="Seek"
+                    aria-valuemin="0"
+                    aria-valuemax="100"
+                    aria-valuenow="0"
+                    aria-valuetext="No track loaded"
+                  >
+                    <div class="ipod-progress__track" id="ipod-progress-track" aria-hidden="true">
                       <div class="ipod-progress__fill" id="ipod-progress-fill"></div>
                     </div>
                     <span class="ipod-progress__knob" id="ipod-progress-knob" aria-hidden="true"></span>
@@ -2841,7 +2977,7 @@
                 </svg>
               </button>
               <button type="button" class="ipod-transport__btn ipod-transport__btn--play" id="ipod-wheel-center" aria-label="Play or pause">
-                <span class="ipod-transport__icon" id="ipod-wheel-center-icon" aria-hidden="true">▶</span>
+                <span class="ipod-transport__icon ipod-transport__icon--play" id="ipod-wheel-center-icon" aria-hidden="true">▶</span>
               </button>
               <button type="button" class="ipod-transport__btn" id="ipod-wheel-next" aria-label="Next track">
                 <svg class="ipod-transport__svg" viewBox="0 0 40 24" aria-hidden="true">
@@ -2941,47 +3077,155 @@
     </section>
 
     <section class="box box--blue">
-      <h2 class="box__head">FLO LIVE</h2>
+      <h2 class="box__head" id="flo-live-heading">FLO LIVE</h2>
       <div class="box__body">
-        <div class="vevo-grid">
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=QJR77KB1wq4" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Check</div>
-            <div class="vevo-card__meta">Live from Vevo Studios · 2024</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=XBnJ3mLQJ5w" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Bending My Rules</div>
-            <div class="vevo-card__meta">Live from Vevo Studios · 2024</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=Laz2udZieRM" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Feature Me</div>
-            <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=B7xmqFBuK9k" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Not My Job</div>
-            <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=4yC_2n9VIVY" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Immature</div>
-            <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=pCOyYgvEfTk" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Cardboard Box</div>
-            <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
-          </a>
-          <a class="vevo-card" href="https://www.youtube.com/watch?v=pfTbj43Dkjc" target="_blank" rel="noopener noreferrer">
-            <div class="vevo-card__title">Cardboard Box (Acoustic)</div>
-            <div class="vevo-card__meta">Live Acoustic — full set moment</div>
-          </a>
-          <a
-            class="vevo-card"
-            href="https://www.youtube.com/playlist?list=PLkqz3S84Tw-QNH0mcv-G8lsq6xnEcalw1"
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label="Live performances playlist on YouTube (opens in new tab)"
-          >
-            <div class="vevo-card__title">Live performances playlist</div>
-            <div class="vevo-card__meta">YouTube · Playlist</div>
-          </a>
+        <div
+          class="vevo-carousel"
+          data-vevo-carousel
+          role="region"
+          aria-labelledby="flo-live-heading"
+          aria-roledescription="carousel"
+        >
+          <div class="vevo-carousel__row">
+            <button
+              type="button"
+              class="vevo-carousel__btn vevo-carousel__btn--prev"
+              aria-controls="vevo-carousel-track"
+              aria-label="Previous live videos"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M15 18l-6-6 6-6" />
+              </svg>
+            </button>
+            <div class="vevo-carousel__viewport">
+              <div class="vevo-carousel__track" id="vevo-carousel-track" role="list">
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=QJR77KB1wq4" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/QJR77KB1wq4/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/QJR77KB1wq4/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Check</div>
+                      <div class="vevo-card__meta">Live from Vevo Studios · 2024</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=XBnJ3mLQJ5w" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/XBnJ3mLQJ5w/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/XBnJ3mLQJ5w/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Bending My Rules</div>
+                      <div class="vevo-card__meta">Live from Vevo Studios · 2024</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=Laz2udZieRM" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/Laz2udZieRM/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/Laz2udZieRM/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Feature Me</div>
+                      <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=B7xmqFBuK9k" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/B7xmqFBuK9k/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/B7xmqFBuK9k/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Not My Job</div>
+                      <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=4yC_2n9VIVY" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/4yC_2n9VIVY/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/4yC_2n9VIVY/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Immature</div>
+                      <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
+                    </div>
+                  </a>
+                </div>
+                <div class="vevo-carousel__slide" role="listitem">
+                  <a class="vevo-card" href="https://www.youtube.com/watch?v=pCOyYgvEfTk" target="_blank" rel="noopener noreferrer">
+                    <div class="vevo-card__thumb">
+                      <img
+                        src="https://img.youtube.com/vi/pCOyYgvEfTk/maxresdefault.jpg"
+                        alt=""
+                        width="1280"
+                        height="720"
+                        loading="lazy"
+                        decoding="async"
+                        onerror="this.onerror=null;this.src='https://img.youtube.com/vi/pCOyYgvEfTk/hqdefault.jpg'"
+                      />
+                    </div>
+                    <div class="vevo-card__body">
+                      <div class="vevo-card__title">Cardboard Box</div>
+                      <div class="vevo-card__meta">Vevo DSCVR · 2022</div>
+                    </div>
+                  </a>
+                </div>
+              </div>
+            </div>
+            <button
+              type="button"
+              class="vevo-carousel__btn vevo-carousel__btn--next"
+              aria-controls="vevo-carousel-track"
+              aria-label="Next live videos"
+            >
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                <path d="M9 18l6-6-6-6" />
+              </svg>
+            </button>
+          </div>
         </div>
       </div>
     </section>
@@ -3017,8 +3261,8 @@
         </button>
       </div>
       <p class="footer__credits">
-        <span class="footer__credits-line">Fan tribute • Not affiliated with NPR or FLO mgmt • © 2026</span>
-        <span class="footer__credits-line">Made with ♥ &amp; Cursor</span>
+        <span class="footer__credits-line">Fan tribute • Not affiliated with NPR or FLO mgmt</span>
+        <span class="footer__credits-line">© 2026 Made with ♥ &amp; Cursor</span>
       </p>
     </footer>
   </div>
@@ -3040,7 +3284,7 @@
       const npArt = document.getElementById("np-art");
       const setlistAudio = document.getElementById("setlist-audio");
       const ipodProgressFill = document.getElementById("ipod-progress-fill");
-      const ipodProgressTrack = document.getElementById("ipod-progress-track");
+      const ipodProgressTrackHost = document.getElementById("ipod-progress-track-host");
       const ipodTimeCurrent = document.getElementById("ipod-time-current");
       const ipodTimeTotal = document.getElementById("ipod-time-total");
       const ipodProgress = document.getElementById("ipod-progress");
@@ -3099,6 +3343,7 @@
       function revealIpodProgressPanel() {
         if (!setlistPlayingRow) return;
         if (ipodProgress) ipodProgress.classList.remove("ipod-progress--idle");
+        if (ipodProgressTrackHost) ipodProgressTrackHost.tabIndex = 0;
         if (ipodProgressTimes) {
           ipodProgressTimes.hidden = false;
           ipodProgressTimes.setAttribute("aria-hidden", "false");
@@ -3107,6 +3352,7 @@
 
       function applyIpodProgressIdleState() {
         if (ipodProgress) ipodProgress.classList.add("ipod-progress--idle");
+        if (ipodProgressTrackHost) ipodProgressTrackHost.tabIndex = -1;
         if (ipodProgressTimes) {
           ipodProgressTimes.hidden = true;
           ipodProgressTimes.setAttribute("aria-hidden", "true");
@@ -3115,9 +3361,9 @@
         if (ipodTimeTotal) ipodTimeTotal.textContent = "";
         if (ipodProgressFill) ipodProgressFill.style.width = "0%";
         if (ipodProgressKnob) ipodProgressKnob.style.left = "0%";
-        if (ipodProgressTrack) {
-          ipodProgressTrack.setAttribute("aria-valuenow", "0");
-          ipodProgressTrack.setAttribute("aria-valuetext", "No track loaded");
+        if (ipodProgressTrackHost) {
+          ipodProgressTrackHost.setAttribute("aria-valuenow", "0");
+          ipodProgressTrackHost.setAttribute("aria-valuetext", "No track loaded");
         }
       }
 
@@ -3145,27 +3391,126 @@
           var pct = Math.min(100, Math.max(0, (cur / dur) * 100));
           ipodProgressFill.style.width = pct + "%";
           if (ipodProgressKnob) ipodProgressKnob.style.left = pct + "%";
-          if (ipodProgressTrack) {
-            ipodProgressTrack.setAttribute("aria-valuenow", String(Math.round(pct)));
-            ipodProgressTrack.setAttribute("aria-valuetext", formatTime(cur) + " of " + formatTime(dur));
+          if (ipodProgressTrackHost) {
+            ipodProgressTrackHost.setAttribute("aria-valuenow", String(Math.round(pct)));
+            ipodProgressTrackHost.setAttribute("aria-valuetext", formatTime(cur) + " of " + formatTime(dur));
           }
         } else {
           ipodTimeTotal.textContent = "--:--";
           ipodProgressFill.style.width = "0%";
           if (ipodProgressKnob) ipodProgressKnob.style.left = "0%";
-          if (ipodProgressTrack) {
-            ipodProgressTrack.setAttribute("aria-valuenow", "0");
-            ipodProgressTrack.setAttribute("aria-valuetext", formatTime(cur) + " of --:--");
+          if (ipodProgressTrackHost) {
+            ipodProgressTrackHost.setAttribute("aria-valuenow", "0");
+            ipodProgressTrackHost.setAttribute("aria-valuetext", formatTime(cur) + " of --:--");
           }
         }
+      }
+
+      var ipodScrubPointerId = null;
+
+      function ipodSliderDurationOk() {
+        var dur = setlistAudio.duration;
+        return !!(dur && isFinite(dur) && dur > 0);
+      }
+
+      function ipodScrubFractionFromClientX(clientX) {
+        if (!ipodProgressTrackHost) return null;
+        var rect = ipodProgressTrackHost.getBoundingClientRect();
+        var w = rect.width;
+        if (!(w > 0)) return null;
+        return Math.min(1, Math.max(0, (clientX - rect.left) / w));
+      }
+
+      function seekSetlistAudioToFraction(frac) {
+        if (!ipodSliderDurationOk()) return;
+        frac = Math.min(1, Math.max(0, frac));
+        setlistAudio.currentTime = frac * setlistAudio.duration;
+        updateIpodProgressUI();
+      }
+
+      function seekSetlistAudioBySeconds(delta) {
+        if (!ipodSliderDurationOk()) return;
+        var dur = setlistAudio.duration;
+        var t = (setlistAudio.currentTime || 0) + delta;
+        seekSetlistAudioToFraction(t / dur);
+      }
+
+      function endIpodScrub(ev) {
+        if (ipodScrubPointerId == null) return;
+        if (ev && ev.pointerId != null && ev.pointerId !== ipodScrubPointerId) return;
+        if (
+          ipodProgressTrackHost &&
+          ev &&
+          ev.pointerId != null &&
+          ev.type !== "lostpointercapture" &&
+          ipodProgressTrackHost.releasePointerCapture
+        ) {
+          try {
+            ipodProgressTrackHost.releasePointerCapture(ev.pointerId);
+          } catch (eRelease) {}
+        }
+        ipodScrubPointerId = null;
+        if (ipodProgress) ipodProgress.classList.remove("ipod-progress--scrubbing");
+        updateIpodProgressUI();
+      }
+
+      if (ipodProgressTrackHost) {
+        ipodProgressTrackHost.addEventListener("pointerdown", function (ev) {
+          if (ipodProgress && ipodProgress.classList.contains("ipod-progress--idle")) return;
+          if (!ipodSliderDurationOk()) return;
+          if (ev.button !== 0) return;
+          var frac = ipodScrubFractionFromClientX(ev.clientX);
+          if (frac == null) return;
+          ipodScrubPointerId = ev.pointerId;
+          if (ipodProgress) ipodProgress.classList.add("ipod-progress--scrubbing");
+          try {
+            ipodProgressTrackHost.setPointerCapture(ev.pointerId);
+          } catch (eCap) {}
+          seekSetlistAudioToFraction(frac);
+          ev.preventDefault();
+        });
+        ipodProgressTrackHost.addEventListener("pointermove", function (ev) {
+          if (ipodScrubPointerId == null || ev.pointerId !== ipodScrubPointerId) return;
+          var frac = ipodScrubFractionFromClientX(ev.clientX);
+          if (frac != null) seekSetlistAudioToFraction(frac);
+          ev.preventDefault();
+        });
+        ipodProgressTrackHost.addEventListener("pointerup", endIpodScrub);
+        ipodProgressTrackHost.addEventListener("pointercancel", endIpodScrub);
+        ipodProgressTrackHost.addEventListener("lostpointercapture", function (ev) {
+          if (ev.pointerId === ipodScrubPointerId) endIpodScrub(ev);
+        });
+        ipodProgressTrackHost.addEventListener("keydown", function (ev) {
+          if (ipodProgress && ipodProgress.classList.contains("ipod-progress--idle")) return;
+          if (!ipodSliderDurationOk()) return;
+          var handled = false;
+          if (ev.key === "ArrowLeft" || ev.key === "ArrowDown") {
+            seekSetlistAudioBySeconds(-5);
+            handled = true;
+          } else if (ev.key === "ArrowRight" || ev.key === "ArrowUp") {
+            seekSetlistAudioBySeconds(5);
+            handled = true;
+          } else if (ev.key === "Home") {
+            seekSetlistAudioToFraction(0);
+            handled = true;
+          } else if (ev.key === "End") {
+            seekSetlistAudioToFraction(1);
+            handled = true;
+          }
+          if (handled) ev.preventDefault();
+        });
       }
 
       function syncIpodWheelCenterIcon() {
         if (!ipodWheelCenterIcon) return;
         if (setlistPlayingRow && !setlistAudio.paused) {
           ipodWheelCenterIcon.textContent = "❚❚";
+          ipodWheelCenterIcon.classList.remove("ipod-transport__icon--play");
+          ipodWheelCenterIcon.classList.add("ipod-transport__icon--pause");
         } else {
           ipodWheelCenterIcon.textContent = "▶";
+          ipodWheelCenterIcon.classList.remove("ipod-transport__icon--pause");
+          ipodWheelCenterIcon.classList.add("ipod-transport__icon--play");
         }
       }
 
@@ -3846,6 +4191,94 @@
           closePhotocardModal();
         }
       });
+    })();
+
+    (function () {
+      var root = document.querySelector("[data-vevo-carousel]");
+      if (!root) return;
+
+      var viewport = root.querySelector(".vevo-carousel__viewport");
+      var track = root.querySelector(".vevo-carousel__track");
+      var btnPrev = root.querySelector(".vevo-carousel__btn--prev");
+      var btnNext = root.querySelector(".vevo-carousel__btn--next");
+      if (!viewport || !track || !btnPrev || !btnNext) return;
+
+      var slides = track.querySelectorAll(".vevo-carousel__slide");
+      if (slides.length === 0) return;
+
+      var mq = window.matchMedia("(max-width: 600px)");
+      var page = 0;
+
+      function slidesPerView() {
+        return mq.matches ? 1 : 2;
+      }
+
+      function lastPage() {
+        var spv = slidesPerView();
+        return Math.max(0, Math.ceil(slides.length / spv) - 1);
+      }
+
+      function clampPage() {
+        var lp = lastPage();
+        if (page > lp) page = lp;
+        if (page < 0) page = 0;
+      }
+
+      function update() {
+        clampPage();
+        var spv = slidesPerView();
+        var first = page * spv;
+        if (first >= slides.length) {
+          page = lastPage();
+          first = page * spv;
+        }
+        var offset = slides[first] ? slides[first].offsetLeft : 0;
+        track.style.transform = "translate3d(" + -offset + "px,0,0)";
+        var lp = lastPage();
+        btnPrev.disabled = page <= 0;
+        btnNext.disabled = page >= lp;
+      }
+
+      btnPrev.addEventListener("click", function () {
+        if (page > 0) {
+          page--;
+          update();
+        }
+      });
+
+      btnNext.addEventListener("click", function () {
+        if (page < lastPage()) {
+          page++;
+          update();
+        }
+      });
+
+      function onSpvChange() {
+        clampPage();
+        update();
+      }
+
+      if (mq.addEventListener) {
+        mq.addEventListener("change", onSpvChange);
+      } else if (mq.addListener) {
+        mq.addListener(onSpvChange);
+      }
+
+      window.addEventListener(
+        "resize",
+        function () {
+          update();
+        },
+        { passive: true }
+      );
+
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(function () {
+          update();
+        });
+      }
+
+      update();
     })();
   </script>
 </body>
