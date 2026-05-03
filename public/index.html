@@ -2382,20 +2382,9 @@
       margin: 4px 0 0;
       font-family: var(--font-display);
       opacity: 1;
-    }
-
-    .hit-counter--footer .hit-counter__sep {
-      font-family: var(--font-display);
-      font-size: clamp(1.75rem, 5.5vw, 2.35rem);
-      font-weight: 800;
-      line-height: 1;
-      margin: 0 0.02em;
       user-select: none;
-      background: linear-gradient(165deg, #ffffff 0%, #b8c0d4 40%, #6b7388 100%);
-      -webkit-background-clip: text;
-      background-clip: text;
-      color: transparent;
-      filter: drop-shadow(0 0 14px rgba(200, 210, 255, 0.4));
+      -webkit-user-select: none;
+      cursor: default;
     }
 
     .hit-counter--footer .hit-digit {
@@ -2433,8 +2422,7 @@
     }
 
     @media (max-width: 420px) {
-      .hit-counter--footer .hit-digit__inner,
-      .hit-counter--footer .hit-counter__sep {
+      .hit-counter--footer .hit-digit__inner {
         font-size: 1.65rem;
       }
     }
@@ -3005,7 +2993,6 @@
           <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
           <div class="hit-digit"><span class="hit-digit__inner">0</span></div>
           <div class="hit-digit"><span class="hit-digit__inner">3</span></div>
-          <span class="hit-counter__sep" aria-hidden="true">,</span>
           <div class="hit-digit"><span class="hit-digit__inner">8</span></div>
           <div class="hit-digit"><span class="hit-digit__inner">4</span></div>
           <div class="hit-digit"><span class="hit-digit__inner">7</span></div>
