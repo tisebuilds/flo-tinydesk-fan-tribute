@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/", "destination": "/flo-y2k.html" },
+    { "source": "/flo-y2k", "destination": "/flo-y2k.html" }
+  ]
+}
