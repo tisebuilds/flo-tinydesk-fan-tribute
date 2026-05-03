@@ -870,8 +870,8 @@
       color: var(--editorial-muted);
     }
 
-    .ipod-progress--idle .ipod-progress__time {
-      visibility: hidden;
+    .ipod-progress--idle .ipod-progress__bar-row {
+      display: none;
     }
 
     @keyframes setlistEq {
@@ -1710,6 +1710,73 @@
     @media (prefers-reduced-motion: reduce) {
       .photocard-modal__stage.is-animating .member-card {
         animation: none;
+      }
+    }
+
+    /* Hi-res load: cover stays visible; diagonal gleam until download image is ready */
+    .photocard-modal__card-host {
+      position: relative;
+      width: 100%;
+    }
+
+    .photocard-modal__shine {
+      position: absolute;
+      inset: 0;
+      z-index: 4;
+      pointer-events: none;
+      border-radius: 11px;
+      overflow: hidden;
+      opacity: 0;
+      transition: opacity 0.42s ease;
+      mix-blend-mode: soft-light;
+    }
+
+    .photocard-modal__card-host--loading .photocard-modal__shine {
+      opacity: 1;
+    }
+
+    .photocard-modal__card-host--hires-ready .photocard-modal__shine {
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .photocard-modal__shine::before {
+      content: "";
+      position: absolute;
+      top: -25%;
+      left: -45%;
+      width: 50%;
+      height: 150%;
+      background: linear-gradient(
+        100deg,
+        rgba(255, 255, 255, 0) 0%,
+        rgba(255, 255, 255, 0.06) 40%,
+        rgba(255, 255, 255, 0.5) 50%,
+        rgba(255, 255, 255, 0.06) 60%,
+        rgba(255, 255, 255, 0) 100%
+      );
+      transform: rotate(16deg) translateX(-35%);
+      animation: photocardModalShineSweep 1.35s ease-in-out infinite;
+    }
+
+    @keyframes photocardModalShineSweep {
+      0% {
+        transform: rotate(16deg) translateX(-40%);
+      }
+      100% {
+        transform: rotate(16deg) translateX(260%);
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .photocard-modal__shine::before {
+        animation: none;
+        transform: rotate(16deg) translateX(40%);
+        opacity: 0.35;
+      }
+
+      .photocard-modal__card-host--loading .photocard-modal__shine {
+        opacity: 0.2;
       }
     }
 
@@ -2731,7 +2798,7 @@
 
             <div class="ipod-set__progress-wrap" id="ipod-progress-wrap">
               <div class="ipod-progress ipod-progress--idle" id="ipod-progress" role="group" aria-label="Playback position">
-                <div class="ipod-progress__bar-row" id="ipod-progress-times" aria-hidden="true">
+                <div class="ipod-progress__bar-row" id="ipod-progress-times" aria-hidden="true" hidden>
                   <span id="ipod-time-current" class="ipod-progress__time"></span>
                   <div class="ipod-progress__track-host">
                     <div
@@ -2954,6 +3021,7 @@
       const ipodTitleDetailBody = document.getElementById("ipod-title-detail-body");
       const ipodTitlesPlaying = document.getElementById("ipod-titles-playing");
       const ipodNpTrack = document.getElementById("ipod-np-track");
+      const ipodDockTrack = document.getElementById("ipod-dock-track");
       const ipodTitlesIdle = ipodSetHeading ? ipodSetHeading.closest(".ipod-set__titles-stack--idle") : null;
       const npArt = document.getElementById("np-art");
       const setlistAudio = document.getElementById("setlist-audio");
@@ -2973,10 +3041,11 @@
       const IDLE_SET_DETAIL = "Live at NPR’s Tiny Desk";
 
       function applyIpodPlayingTitles() {
-        if (!setlistPlayingRow || !ipodNpTrack) return;
+        if (!setlistPlayingRow) return;
         var t = setlistPlayingRow.getAttribute("data-title");
         if (!t) return;
-        ipodNpTrack.textContent = t;
+        if (ipodNpTrack) ipodNpTrack.textContent = t;
+        if (ipodDockTrack) ipodDockTrack.textContent = t;
         if (!ipodSetTitlesRoot || !ipodTitlesPlaying) return;
         var wasPlaying = ipodSetTitlesRoot.classList.contains("ipod-set__titles--playing");
         if (!wasPlaying) {
@@ -3002,6 +3071,7 @@
           ipodTitlesPlaying.setAttribute("aria-hidden", "true");
           var clearNp = function () {
             if (ipodNpTrack) ipodNpTrack.textContent = "";
+            if (ipodDockTrack) ipodDockTrack.textContent = "Pick a track";
           };
           if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
             clearNp();
@@ -3013,13 +3083,20 @@
       }
 
       function revealIpodProgressPanel() {
+        if (!setlistPlayingRow) return;
         if (ipodProgress) ipodProgress.classList.remove("ipod-progress--idle");
-        if (ipodProgressTimes) ipodProgressTimes.setAttribute("aria-hidden", "false");
+        if (ipodProgressTimes) {
+          ipodProgressTimes.hidden = false;
+          ipodProgressTimes.setAttribute("aria-hidden", "false");
+        }
       }
 
       function applyIpodProgressIdleState() {
         if (ipodProgress) ipodProgress.classList.add("ipod-progress--idle");
-        if (ipodProgressTimes) ipodProgressTimes.setAttribute("aria-hidden", "true");
+        if (ipodProgressTimes) {
+          ipodProgressTimes.hidden = true;
+          ipodProgressTimes.setAttribute("aria-hidden", "true");
+        }
         if (ipodTimeCurrent) ipodTimeCurrent.textContent = "";
         if (ipodTimeTotal) ipodTimeTotal.textContent = "";
         if (ipodProgressFill) ipodProgressFill.style.width = "0%";
@@ -3117,6 +3194,8 @@
         });
         setlistPlayingRow = row;
         row.classList.add("is-playing");
+        var dockTitle = row.getAttribute("data-title");
+        if (ipodDockTrack && dockTitle) ipodDockTrack.textContent = dockTitle;
         applyIpodProgressIdleState();
         setlistAudio.pause();
         setlistAudio.src = src;
@@ -3144,6 +3223,7 @@
           r.classList.remove("is-playing");
         });
         setlistPlayingRow = null;
+        if (ipodDockTrack) ipodDockTrack.textContent = "Pick a track";
         applyIpodProgressIdleState();
         restoreIpodIdleTitles();
         syncIpodWheelCenterIcon();
@@ -3369,17 +3449,75 @@
         clone.removeAttribute("role");
         clone.removeAttribute("aria-haspopup");
         clone.removeAttribute("aria-label");
+        clone.removeAttribute("data-photocard-download");
         var downloadSrc = card.getAttribute("data-photocard-download");
-        if (downloadSrc && downloadSrc.trim()) {
-          var cloneImg = clone.querySelector(".member-card__photo");
-          if (cloneImg) cloneImg.setAttribute("src", downloadSrc.trim());
-          clone.removeAttribute("data-photocard-download");
+        var trimmedDownload = downloadSrc && downloadSrc.trim();
+        var cloneImg = clone.querySelector(".member-card__photo");
+        var reduceMotion =
+          window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+        function mountClone(node) {
+          stage.appendChild(node);
+          stage.classList.add("is-animating");
+          setTimeout(function () {
+            stage.classList.remove("is-animating");
+          }, 480);
         }
-        stage.appendChild(clone);
-        stage.classList.add("is-animating");
-        setTimeout(function () {
-          stage.classList.remove("is-animating");
-        }, 480);
+
+        if (trimmedDownload && cloneImg && !reduceMotion) {
+          var host = document.createElement("div");
+          host.className = "photocard-modal__card-host photocard-modal__card-host--loading";
+          var shine = document.createElement("div");
+          shine.className = "photocard-modal__shine";
+          shine.setAttribute("aria-hidden", "true");
+          host.appendChild(shine);
+          host.appendChild(clone);
+          mountClone(host);
+
+          function endLoadingGleam() {
+            host.classList.remove("photocard-modal__card-host--loading");
+            host.classList.add("photocard-modal__card-host--hires-ready");
+          }
+
+          function applyHiResSrc() {
+            cloneImg.setAttribute("src", trimmedDownload);
+            if (cloneImg.complete && cloneImg.naturalHeight > 0) {
+              endLoadingGleam();
+            } else {
+              cloneImg.addEventListener(
+                "load",
+                function onHiRes() {
+                  cloneImg.removeEventListener("load", onHiRes);
+                  endLoadingGleam();
+                },
+                { once: true }
+              );
+              cloneImg.addEventListener(
+                "error",
+                function onHiResErr() {
+                  cloneImg.removeEventListener("error", onHiResErr);
+                  endLoadingGleam();
+                },
+                { once: true }
+              );
+            }
+          }
+
+          var pre = new Image();
+          pre.onload = function () {
+            applyHiResSrc();
+          };
+          pre.onerror = function () {
+            endLoadingGleam();
+          };
+          pre.src = trimmedDownload;
+        } else {
+          if (trimmedDownload && cloneImg && reduceMotion) {
+            cloneImg.setAttribute("src", trimmedDownload);
+          }
+          mountClone(clone);
+        }
+
         photocardModal.hidden = false;
         photocardModal.setAttribute("aria-hidden", "false");
         document.body.style.overflow = "hidden";
